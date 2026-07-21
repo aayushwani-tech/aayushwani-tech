@@ -30,22 +30,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const drops = Array(Math.floor(columns)).fill(1);
     
     const drawMatrix = () => {
-      ctx.fillStyle = 'rgba(5, 5, 8, 0.15)';
+      // Slow fade background trail
+      ctx.fillStyle = 'rgba(6, 6, 9, 0.12)';
       ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
       
-      ctx.fillStyle = 'rgba(255, 90, 0, 0.35)'; // Amber glowing code rain
-      ctx.font = `${fontSize}px monospace`;
+      ctx.font = `bold ${fontSize}px monospace`;
       
       for (let i = 0; i < drops.length; i++) {
         const text = charArray[Math.floor(Math.random() * charArray.length)];
+        
+        // 1. Draw glowing leading character
+        ctx.fillStyle = 'rgba(255, 235, 210, 0.98)';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgb(255, 90, 0)';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
-        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+        // 2. Draw trailing characters with fading hues
+        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(255, 90, 0, 0.55)' : 'rgba(255, 0, 102, 0.4)';
+        ctx.shadowBlur = 2;
+        ctx.fillText(text, i * fontSize, (drops[i] - 1) * fontSize);
+        
+        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.972) {
           drops[i] = 0;
         }
         drops[i]++;
       }
+      
+      // Reset shadows for next frame operations
+      ctx.shadowBlur = 0;
     };
+
     
     const matrixInterval = setInterval(drawMatrix, 35);
     
