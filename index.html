@@ -19,40 +19,45 @@
 </head>
 <body>
 
-  <!-- Fire Preloader Overlay -->
-  <div class="fire-preloader" id="firePreloader">
-    <canvas class="fire-canvas" id="fireCanvas"></canvas>
-    <div class="fire-overlay"></div>
+  <!-- Cyberpunk Hacking Decryption Interface -->
+  <div class="hacking-access-overlay" id="hackingAccess">
+    <!-- Matrix Code Rain Backdrop -->
+    <canvas class="matrix-canvas" id="matrixCanvas"></canvas>
     
-    <div class="glass-card fire-card">
-      <div class="fire-card-header">
-        <span class="fire-status-dot"></span>
-        <span class="fire-status-text">INITIALIZING SYSTEM ENGINES</span>
+    <!-- Central Hacking Console Card -->
+    <div class="glass-card hacking-console-card">
+      <div class="hacking-header">
+        <span class="pulse-security-dot"></span>
+        <span class="security-status">SECURE ACCESS INITIALIZED</span>
       </div>
       
-      <div class="fire-logo-container">
-        <div class="fire-logo-cube">
-          <div class="cube-face face-front">AW</div>
-          <div class="cube-face face-back">C</div>
-          <div class="cube-face face-left">CS</div>
-          <div class="cube-face face-right">AI</div>
-          <div class="cube-face face-top">PCB</div>
-          <div class="cube-face face-bottom">ENG</div>
+      <!-- 3D Holographic Orbiting Core Node -->
+      <div class="holo-core-wrapper">
+        <div class="holo-core" id="holoCore">
+          <div class="holo-ring ring-1"></div>
+          <div class="holo-ring ring-2"></div>
+          <div class="holo-ring ring-3"></div>
+          <div class="holo-grid-plane"></div>
         </div>
       </div>
       
-      <h2 class="fire-title">AAYUSH WANI</h2>
-      <p class="fire-subtitle">COMPUTER ENGINEERING PORTFOLIO</p>
+      <h2 class="console-heading">AAYUSH WANI PORTFOLIO</h2>
+      <p class="console-subtext">Enter credential key to decode portfolio:</p>
       
-      <div class="fire-progress-container">
-        <div class="fire-progress-bar" id="fireProgressBar"></div>
+      <div class="terminal-command-line">
+        <span class="terminal-prompt">guest@wani-sec:~$ ./decrypt -u</span>
+        <input type="text" id="visitorKeyInput" placeholder="your_name..." autocomplete="off" autofocus>
       </div>
-      <div class="fire-progress-details">
-        <span class="fire-progress-log" id="fireProgressLog">Compiling system files...</span>
-        <span class="fire-progress-percent" id="fireProgressPercent">0%</span>
+      
+      <button id="decryptBtn" class="btn btn-primary decrypt-btn">DECRYPT ACCESS PORT</button>
+      
+      <!-- Hacking Decrypt Log Outputs -->
+      <div class="console-logs-window" id="consoleLogs">
+        <div class="log-row info">System standing by... Ready for decryption command.</div>
       </div>
     </div>
   </div>
+
 
 
   <!-- Scroll Progress Indicator -->

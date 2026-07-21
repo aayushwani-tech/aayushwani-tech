@@ -1,193 +1,153 @@
 document.addEventListener('DOMContentLoaded', () => {
   
   /* ==========================================================================
-     FIRE PRELOADER & CANVAS FLAME EFFECT CONTROLLER
+     CYBERPUNK HACKING ACCESS INTERFACE CONTROLLER
      ========================================================================== */
-  const firePreloader = document.getElementById('firePreloader');
-  const fireCanvas = document.getElementById('fireCanvas');
-  const fireProgressBar = document.getElementById('fireProgressBar');
-  const fireProgressLog = document.getElementById('fireProgressLog');
-  const fireProgressPercent = document.getElementById('fireProgressPercent');
+  const hackingAccess = document.getElementById('hackingAccess');
+  const visitorInput = document.getElementById('visitorKeyInput');
+  const decryptBtn = document.getElementById('decryptBtn');
+  const consoleLogs = document.getElementById('consoleLogs');
+  const holoCore = document.getElementById('holoCore');
+  const matrixCanvas = document.getElementById('matrixCanvas');
   
-  // 1. Fire Particle Simulation
-  if (fireCanvas) {
-    const ctx = fireCanvas.getContext('2d');
-    let animationFrameId;
+  let visitorName = '';
+  
+  // 1. Matrix Code Rain Backdrop Animation
+  if (matrixCanvas) {
+    const ctx = matrixCanvas.getContext('2d');
     
     const resizeCanvas = () => {
-      fireCanvas.width = window.innerWidth;
-      fireCanvas.height = window.innerHeight;
+      matrixCanvas.width = window.innerWidth;
+      matrixCanvas.height = window.innerHeight;
     };
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    class FireParticle {
-      constructor() {
-        this.reset();
-        // Distribute initial particles across lifetimes
-        this.y = fireCanvas.height + Math.random() * 100;
-      }
-      
-      reset() {
-        // Weight spawning heavier towards center-bottom, but cover entire width
-        const centerWeight = (Math.random() - 0.5) * (Math.random() - 0.5) * (Math.random() - 0.5);
-        this.x = (fireCanvas.width / 2) + centerWeight * fireCanvas.width * 0.95;
-        this.y = fireCanvas.height + Math.random() * 30;
-        this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = -1.2 - Math.random() * 3.8;
-        this.maxLife = 50 + Math.random() * 55;
-        this.life = this.maxLife;
-        this.size = 12 + Math.random() * 22;
-      }
-      
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        
-        // Dynamic horizontal draft
-        this.vx += (Math.random() - 0.5) * 0.22;
-        
-        // Shrink particle size over life
-        this.size -= 0.12;
-        if (this.size < 0) this.size = 0;
-        
-        this.life--;
-      }
-      
-      draw() {
-        if (this.life <= 0 || this.size <= 0) return;
-        
-        const ratio = this.life / this.maxLife; // 1.0 down to 0.0
-        const opacity = ratio * 0.68;
-        
-        let color;
-        if (ratio > 0.68) {
-          // Golden white core
-          color = `rgba(255, 235, 170, ${opacity})`;
-        } else if (ratio > 0.38) {
-          // Intense orange
-          color = `rgba(255, 95, 0, ${opacity})`;
-        } else if (ratio > 0.15) {
-          // Smoldering red
-          color = `rgba(225, 15, 35, ${opacity * 0.95})`;
-        } else {
-          // Dark charcoal ash & smoke
-          color = `rgba(75, 65, 65, ${opacity * 0.35})`;
-        }
-        
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
+    const chars = "0101010101110010100101010111110001011C_C++_BINARY_NMIMS_SECURITY_OVERRIDE";
+    const charArray = chars.split("");
+    const fontSize = 13;
+    let columns = matrixCanvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
     
-    const particles = [];
-    const maxParticles = 140;
-    for (let i = 0; i < maxParticles; i++) {
-      particles.push(new FireParticle());
-    }
-    
-    const animateFire = () => {
-      // Create trails by drawing low-opacity dark rectangle
-      ctx.fillStyle = 'rgba(6, 5, 5, 0.14)';
-      ctx.fillRect(0, 0, fireCanvas.width, fireCanvas.height);
+    const drawMatrix = () => {
+      ctx.fillStyle = 'rgba(5, 5, 8, 0.15)';
+      ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
       
-      ctx.globalCompositeOperation = 'screen';
+      ctx.fillStyle = 'rgba(255, 90, 0, 0.35)'; // Amber glowing code rain
+      ctx.font = `${fontSize}px monospace`;
       
-      particles.forEach(p => {
-        p.update();
-        if (p.life <= 0 || p.size <= 0) {
-          p.reset();
+      for (let i = 0; i < drops.length; i++) {
+        const text = charArray[Math.floor(Math.random() * charArray.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
         }
-        p.draw();
-      });
-      
-      // Periodic ash/fire embers floating high
-      if (Math.random() > 0.72) {
-        ctx.fillStyle = 'rgba(255, 160, 0, 0.85)';
-        ctx.beginPath();
-        ctx.arc(
-          Math.random() * fireCanvas.width, 
-          fireCanvas.height - 100 - Math.random() * 250, 
-          1.2 + Math.random() * 2.2, 
-          0, 
-          Math.PI * 2
-        );
-        ctx.fill();
+        drops[i]++;
       }
-      
-      animationFrameId = requestAnimationFrame(animateFire);
     };
-    animateFire();
     
-    if (firePreloader) {
-      firePreloader.addEventListener('transitionend', () => {
-        if (firePreloader.classList.contains('fade-out')) {
-          cancelAnimationFrame(animationFrameId);
-          window.removeEventListener('resize', resizeCanvas);
+    const matrixInterval = setInterval(drawMatrix, 35);
+    
+    if (hackingAccess) {
+      hackingAccess.addEventListener('transitionend', () => {
+        if (hackingAccess.classList.contains('fade-out')) {
+          clearInterval(matrixInterval);
         }
       });
     }
   }
 
-  // 2. Automatic Progress Progression
-  if (firePreloader) {
-    const logs = [
-      "Igniting central system engine...",
-      "Initializing 3D render pipelines...",
-      "Resolving compiler definitions...",
-      "Mapping CS fundamental models...",
-      "Loading C programming instructions...",
-      "Calibrating system assets & circuit traces...",
-      "Initialization successful. Launching core portfolio!"
+  // 2. Run Decryption Logging Sequence
+  const runDecryptionSequence = (name) => {
+    visitorName = name.trim();
+    if (!visitorName) visitorName = 'Guest';
+    
+    localStorage.setItem('aayush_portfolio_visitor', visitorName);
+    
+    if (visitorInput) visitorInput.disabled = true;
+    if (decryptBtn) decryptBtn.disabled = true;
+    
+    // Speed up the 3D hologram spin rotation
+    if (holoCore) {
+      holoCore.style.animation = 'spinHoloCore 1.5s infinite cubic-bezier(0.55, 0.085, 0.68, 0.53)';
+    }
+    
+    
+    
+    const logRows = [
+      { text: `guest@wani-sec:~$ ./decrypt --auth --user="${visitorName}"`, type: 'cmd' },
+      { text: `[FIREWALL] Requesting node override clearance...`, type: 'info' },
+      { text: `[SECURITY] Decrypting database hashes: NMIMS_SHIRPUR... [SUCCESS]`, type: 'alert' },
+      { text: `[INFO] Parsing CS fundamentals, pointer arrays & logic units...`, type: 'info' },
+      { text: `[BYPASS] Disabling secondary stack filtration filters...`, type: 'alert' },
+      { text: `[SUCCESS] Decrypted core portfolio. Connection secure.`, type: 'success' }
     ];
     
-    let progress = 0;
+    let currentLogIndex = 0;
+    if (consoleLogs) {
+      consoleLogs.innerHTML = '';
+    }
     
-    const updateProgress = () => {
-      if (progress <= 100) {
-        if (fireProgressBar) fireProgressBar.style.width = `${progress}%`;
-        if (fireProgressPercent) fireProgressPercent.textContent = `${progress}%`;
-        
-        // Log rotation
-        const logIndex = Math.floor((progress / 100) * (logs.length - 1));
-        if (fireProgressLog) fireProgressLog.textContent = logs[logIndex];
-        
-        // Easing typing speed delay
-        let delay = 15 + Math.random() * 25;
-        if (progress > 30 && progress < 70) {
-          delay += Math.random() * 50;
+    const printNextLogRow = () => {
+      if (currentLogIndex < logRows.length) {
+        const log = logRows[currentLogIndex];
+        const logEl = document.createElement('div');
+        logEl.className = `log-row ${log.type}`;
+        logEl.textContent = log.text;
+        if (consoleLogs) {
+          consoleLogs.appendChild(logEl);
+          consoleLogs.scrollTop = consoleLogs.scrollHeight;
         }
+        currentLogIndex++;
         
-        progress++;
-        setTimeout(updateProgress, delay);
+        setTimeout(printNextLogRow, 300 + Math.random() * 200);
       } else {
-        // Done: animate transition and exit
         setTimeout(() => {
-          firePreloader.classList.add('fade-out');
+          if (hackingAccess) {
+            hackingAccess.classList.add('fade-out');
+          }
           
-          // Trigger entry transitions for portfolio elements
+          const badgeText = document.getElementById('heroBadgeText');
+          if (badgeText) {
+            badgeText.textContent = `Welcome, ${visitorName}! Available for projects & learning`;
+          }
+          
           const heroReveals = document.querySelectorAll('.hero-section .reveal-on-scroll');
           heroReveals.forEach(el => el.classList.add('revealed'));
           
-          // Greet visitor
-          const savedVisitor = localStorage.getItem('aayush_portfolio_visitor') || 'Guest';
-          const badgeText = document.getElementById('heroBadgeText');
-          if (badgeText) {
-            badgeText.textContent = `Welcome, ${savedVisitor}! Available for projects & learning`;
-          }
-          
           setTimeout(() => {
-            firePreloader.remove();
-          }, 1000);
+            if (hackingAccess) {
+              hackingAccess.remove();
+            }
+          }, 1200);
         }, 500);
       }
     };
     
-    // Start progression
-    setTimeout(updateProgress, 250);
+    printNextLogRow();
+  };
+  
+  const savedVisitor = localStorage.getItem('aayush_portfolio_visitor');
+  if (savedVisitor && visitorInput) {
+    visitorInput.value = savedVisitor;
   }
+  
+  if (decryptBtn) {
+    decryptBtn.addEventListener('click', () => {
+      const val = visitorInput ? visitorInput.value : '';
+      runDecryptionSequence(val);
+    });
+  }
+  
+  if (visitorInput) {
+    visitorInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        runDecryptionSequence(visitorInput.value);
+      }
+    });
+  }
+
 
   
   /* ==========================================================================
