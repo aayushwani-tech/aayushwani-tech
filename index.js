@@ -79,6 +79,33 @@ document.addEventListener('DOMContentLoaded', () => {
     
     localStorage.setItem('aayush_portfolio_visitor', visitorName);
     
+    // 1. Log custom event in your Vercel Analytics Dashboard
+    if (typeof va === 'function') {
+      va('event', { name: 'visitor_name_entered', data: { name: visitorName } });
+    }
+
+    // 2. Send instant notification to your Discord Server (Optional)
+    // Create a Webhook on your Discord server, and paste the URL below:
+    const discordWebhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
+    if (discordWebhookUrl && discordWebhookUrl !== 'YOUR_DISCORD_WEBHOOK_URL') {
+      fetch(discordWebhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          embeds: [{
+            title: "🎯 New Portfolio Visitor",
+            color: 16738304, // Warm sunset orange color hex (decimal: 16738304)
+            fields: [
+              { name: "Name", value: visitorName, inline: true },
+              { name: "Time", value: new Date().toLocaleString(), inline: true }
+            ],
+            footer: { text: "Wani-Sec Authentication System" }
+          }]
+        })
+      }).catch(err => console.error('Webhook notification failed:', err));
+    }
+
+    
     if (visitorInput) visitorInput.disabled = true;
     if (decryptBtn) decryptBtn.disabled = true;
     
