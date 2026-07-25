@@ -402,52 +402,71 @@ document.addEventListener('DOMContentLoaded', () => {
      CONTACT FORM HANDLING
      ========================================================================== */
   const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-  const submitBtn = contactForm.querySelector('.submit-btn');
-  const submitBtnText = submitBtn.querySelector('span');
+  const contactConsole = document.getElementById('contactConsole');
+  const contactConsoleLogs = document.getElementById('contactConsoleLogs');
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Disable submit button and show loading state
-    submitBtn.disabled = true;
-    submitBtnText.textContent = 'Sending Message...';
-    formStatus.className = 'form-status hidden';
-
     // Get form data
     const name = document.getElementById('formName').value;
     const email = document.getElementById('formEmail').value;
     const message = document.getElementById('formMessage').value;
 
-    // Simulate sending email (async delay of 1.5s)
-    setTimeout(() => {
-      // Basic validation check
-      if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-        formStatus.textContent = 'Please fill out all fields.';
-        formStatus.className = 'form-status error';
-        submitBtn.disabled = false;
-        submitBtnText.textContent = 'Send Message';
-        return;
+    // Basic validation check
+    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+      alert('Please fill out all fields.');
+      return;
+    }
+
+    // Hide standard form, reveal security console
+    contactForm.style.display = 'none';
+    contactConsole.classList.remove('hidden');
+    contactConsoleLogs.innerHTML = '';
+
+    const logRows = [
+      { text: `guest@wani-sec:~$ send_message --auth --user="${name}"`, type: 'cmd' },
+      { text: `[INFO] Initializing secure handshake with relay...`, type: 'info' },
+      { text: `[INFO] Authenticating sender client: <${email}>`, type: 'info' },
+      { text: `[SECURITY] Packaging stream data with RSA-4096 encryption... [OK]`, type: 'alert' },
+      { text: `[TRANSMISSION] Routing data packet through secure stack layers...`, type: 'info' },
+      { text: `[SUCCESS] Message successfully delivered to Aayush Wani!`, type: 'success' },
+      { text: `[INFO] Secure log node offline. Connection terminated.`, type: 'info' }
+    ];
+
+    let currentLogIndex = 0;
+    const printNextLogRow = () => {
+      if (currentLogIndex < logRows.length) {
+        const log = logRows[currentLogIndex];
+        const logEl = document.createElement('div');
+        logEl.className = `log-row ${log.type}`;
+        logEl.textContent = log.text;
+        contactConsoleLogs.appendChild(logEl);
+        contactConsoleLogs.scrollTop = contactConsoleLogs.scrollHeight;
+        currentLogIndex++;
+        
+        setTimeout(printNextLogRow, 300 + Math.random() * 200);
+      } else {
+        // Show button to reset form and write another message
+        setTimeout(() => {
+          const resetBtn = document.createElement('button');
+          resetBtn.className = 'btn btn-secondary btn-small mt-4';
+          resetBtn.style.alignSelf = 'flex-start';
+          resetBtn.innerHTML = '<span>Send Another Message</span>';
+          resetBtn.addEventListener('click', () => {
+            contactConsole.classList.add('hidden');
+            contactForm.reset();
+            contactForm.style.display = 'block';
+          });
+          contactConsoleLogs.appendChild(resetBtn);
+          contactConsoleLogs.scrollTop = contactConsoleLogs.scrollHeight;
+        }, 600);
       }
+    };
 
-      // Success feedback
-      formStatus.textContent = `Thanks, ${name}! Your message was simulated successfully. You can also reach me directly at aayushwani136@gmail.com!`;
-      formStatus.className = 'form-status success';
-      
-      // Reset form fields
-      contactForm.reset();
-      
-      // Reset button state
-      submitBtn.disabled = false;
-      submitBtnText.textContent = 'Send Message';
-
-      // Automatically hide status after 6 seconds
-      setTimeout(() => {
-        formStatus.className = 'form-status hidden';
-      }, 6000);
-
-    }, 1500);
+    printNextLogRow();
   });
+
 
   /* ==========================================================================
      3D TILT EFFECT FOR GLASS CARDS
@@ -539,12 +558,28 @@ document.addEventListener('DOMContentLoaded', () => {
     constructor() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
+      this.vx = (Math.random() - 0.5) * 0.45;
+      this.vy = (Math.random() - 0.5) * 0.45;
       this.radius = Math.random() * 1.5 + 1;
     }
     
     update() {
+      // Magnetic pull to mouse cursor
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 180) {
+          const force = (180 - dist) / 180;
+          const angle = Math.atan2(dy, dx);
+          
+          // Pull particles gently towards cursor
+          this.x += Math.cos(angle) * force * 0.75;
+          this.y += Math.sin(angle) * force * 0.75;
+        }
+      }
+
       this.x += this.vx;
       this.y += this.vy;
       
@@ -554,11 +589,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
     draw() {
       ctx.beginPath();
+      
+      // Proximity visual swell and pink color morph
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 140) {
+          const ratio = 1 - dist / 140;
+          ctx.arc(this.x, this.y, this.radius * (1 + ratio * 0.6), 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 0, 102, ${0.45 + ratio * 0.45})`;
+          ctx.fill();
+          return;
+        }
+      }
+      
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255, 90, 0, 0.45)';
       ctx.fill();
     }
   }
+
   
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle());
