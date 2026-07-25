@@ -79,10 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     localStorage.setItem('aayush_portfolio_visitor', visitorName);
     
-    // 1. Log custom event in your Vercel Analytics Dashboard
-    if (typeof va === 'function') {
-      va('event', { name: 'visitor_name_entered', data: { name: visitorName } });
-    }
+
+
 
     // 2. Send instant notification to your Discord Server (Optional)
     // Create a Webhook on your Discord server, and paste the URL below:
