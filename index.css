@@ -2855,5 +2855,136 @@ body.preloader-active {
   overflow-y: auto;
 }
 
+/* ==========================================================================
+   CORE INTERESTS SECTION
+   ========================================================================== */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  perspective: 1000px;
+}
+
+.interest-card {
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  z-index: 2;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.interest-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  position: relative;
+  z-index: 2;
+  transform: translateZ(25px);
+}
+
+.interest-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transform: translateZ(20px);
+}
+
+.interest-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  transform: translateZ(15px);
+}
+
+/* Custom Skill/Interest Brand Colors */
+.tech-icon-color { color: #00f0ff; }
+.trading-icon-color { color: #00ff66; }
+.travelling-icon-color { color: #ffae00; }
+.learning-icon-color { color: #d400ff; }
+.innovation-icon-color { color: #ff0055; }
+.future-icon-color { color: #0055ff; }
+
+/* Custom Interest Brand Card Hover Glows */
+.tech-interest:hover {
+  border-color: #00f0ff !important;
+  box-shadow: 0 20px 45px rgba(0, 240, 255, 0.22) !important;
+  background: rgba(0, 240, 255, 0.05) !important;
+}
+.tech-interest:hover .interest-icon {
+  border-color: #00f0ff !important;
+  background: rgba(0, 240, 255, 0.15) !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3) !important;
+  color: #fff !important;
+}
+
+.trading-interest:hover {
+  border-color: #00ff66 !important;
+  box-shadow: 0 20px 45px rgba(0, 255, 102, 0.22) !important;
+  background: rgba(0, 255, 102, 0.05) !important;
+}
+.trading-interest:hover .interest-icon {
+  border-color: #00ff66 !important;
+  background: rgba(0, 255, 102, 0.15) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.3) !important;
+  color: #fff !important;
+}
+
+.travelling-interest:hover {
+  border-color: #ffae00 !important;
+  box-shadow: 0 20px 45px rgba(255, 174, 0, 0.22) !important;
+  background: rgba(255, 174, 0, 0.05) !important;
+}
+.travelling-interest:hover .interest-icon {
+  border-color: #ffae00 !important;
+  background: rgba(255, 174, 0, 0.15) !important;
+  box-shadow: 0 0 20px rgba(255, 174, 0, 0.3) !important;
+  color: #fff !important;
+}
+
+.learning-interest:hover {
+  border-color: #d400ff !important;
+  box-shadow: 0 20px 45px rgba(212, 0, 255, 0.22) !important;
+  background: rgba(212, 0, 255, 0.05) !important;
+}
+.learning-interest:hover .interest-icon {
+  border-color: #d400ff !important;
+  background: rgba(212, 0, 255, 0.15) !important;
+  box-shadow: 0 0 20px rgba(212, 0, 255, 0.3) !important;
+  color: #fff !important;
+}
+
+.innovation-interest:hover {
+  border-color: #ff0055 !important;
+  box-shadow: 0 20px 45px rgba(255, 0, 85, 0.22) !important;
+  background: rgba(255, 0, 85, 0.05) !important;
+}
+.innovation-interest:hover .interest-icon {
+  border-color: #ff0055 !important;
+  background: rgba(255, 0, 85, 0.15) !important;
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.3) !important;
+  color: #fff !important;
+}
+
+.future-interest:hover {
+  border-color: #0055ff !important;
+  box-shadow: 0 20px 45px rgba(0, 85, 255, 0.22) !important;
+  background: rgba(0, 85, 255, 0.05) !important;
+}
+.future-interest:hover .interest-icon {
+  border-color: #0055ff !important;
+  background: rgba(0, 85, 255, 0.15) !important;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.3) !important;
+  color: #fff !important;
+}
+
 
 

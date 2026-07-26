@@ -941,7 +941,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
      3D INTERACTIVE TILT FOR SKILL CARDS
      ========================================================================== */
-  const skillCards = document.querySelectorAll('.skill-card');
+  const skillCards = document.querySelectorAll('.skill-card, .interest-card');
   
   skillCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
