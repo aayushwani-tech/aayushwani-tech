@@ -1096,32 +1096,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ==========================================================================
-     CUSTOM CYBER CURSOR MOUSE MOVEMENT
-     ========================================================================== */
-  const customCursor = document.getElementById('customCursor');
-  if (customCursor) {
-    document.addEventListener('mousemove', (e) => {
-      customCursor.style.left = `${e.clientX}px`;
-      customCursor.style.top = `${e.clientY}px`;
-      customCursor.classList.add('active');
-    });
-
-    document.addEventListener('mouseleave', () => {
-      customCursor.classList.remove('active');
-    });
-
-    // Shrink/expand state on hover elements
-    const updateInteractiveListeners = () => {
-      const interactives = document.querySelectorAll('a, button, input, textarea, select, .glass-card, .btn, .decrypt-btn, .nav-link, .logo');
-      interactives.forEach(el => {
-        el.addEventListener('mouseenter', () => customCursor.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => customCursor.classList.remove('hovering'));
-      });
-    };
-    updateInteractiveListeners();
-    // Re-check periodically for dynamically injected elements
-    setInterval(updateInteractiveListeners, 2000);
-  }
-
 });
