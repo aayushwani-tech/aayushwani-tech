@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.shadowColor = 'rgb(255, 90, 0)';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
-        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(0, 229, 255, 0.55)' : 'rgba(236, 72, 153, 0.4)';
+        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(255, 174, 0, 0.55)' : 'rgba(255, 60, 0, 0.4)';
         ctx.shadowBlur = 2;
         ctx.fillText(text, i * fontSize, (drops[i] - 1) * fontSize);
         
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         x: xb, y: y, z: zb,
         type: 'strandB',
         vx: 0, vy: 0, vz: 0,
-        color: 'rgba(236, 72, 153, 0.95)'
+        color: 'rgba(255, 60, 0, 0.95)'
       });
       
       const idxA = points.length - 2;
@@ -211,14 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
           // base rungs connect A (purple) and B (pink)
           const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
           grad.addColorStop(0, `rgba(255, 90, 0, ${alpha * 0.55})`);
-          grad.addColorStop(1, `rgba(236, 72, 153, ${alpha * 0.55})`);
+          grad.addColorStop(1, `rgba(255, 60, 0, ${alpha * 0.55})`);
           ctx.strokeStyle = grad;
           ctx.lineWidth = 1.1;
         } else if (link.type === 'backboneA') {
-          ctx.strokeStyle = `rgba(0, 229, 255, ${alpha * 1.5})`;
+          ctx.strokeStyle = `rgba(255, 174, 0, ${alpha * 1.5})`;
           ctx.lineWidth = 1.35;
         } else {
-          ctx.strokeStyle = `rgba(0, 229, 255, ${alpha * 1.5})`;
+          ctx.strokeStyle = `rgba(255, 174, 0, ${alpha * 1.5})`;
           ctx.lineWidth = 1.35;
         }
         ctx.stroke();

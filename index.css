@@ -7,20 +7,20 @@
   --bg-card: rgba(15, 23, 42, 0.45);
   --bg-card-hover: rgba(30, 41, 59, 0.6);
   --border-color: rgba(255, 90, 0, 0.15);
-  --border-hover: rgba(0, 229, 255, 0.5);
+  --border-hover: rgba(255, 174, 0, 0.5);
   
   --text-primary: hsl(0, 0%, 98%);
   --text-muted: hsl(220, 14%, 72%);
-  --text-accent: hsl(187, 100%, 75%); /* Glowing Cyan */
+  --text-accent: hsl(38, 100%, 70%); /* Glowing Cyan */
   
   --primary: #ff5a00; /* Cyberpunk Purple */
   --primary-glow: rgba(255, 90, 0, 0.25);
-  --secondary: #00e5ff; /* Cyberpunk Cyan */
-  --accent: #ec4899; /* Cyberpunk Pink */
+  --secondary: #ffae00; /* Cyberpunk Cyan */
+  --accent: #ff3c00; /* Cyberpunk Pink */
   
   --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   --gradient-text: linear-gradient(135deg, #ffffff 10%, var(--text-accent) 50%, var(--accent) 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(255, 90, 0, 0.5) 0%, rgba(0, 229, 255, 0.5) 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(255, 90, 0, 0.5) 0%, rgba(255, 174, 0, 0.5) 100%);
 
   /* Shadows & Glassmorphism */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -440,8 +440,8 @@ body.preloader-active {
 .preloader-progress-bar {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #00f0ff, #ff0066);
-  box-shadow: 0 0 10px #00f0ff;
+  background: linear-gradient(90deg, #ffae00, #ff3c00);
+  box-shadow: 0 0 10px #ffae00;
   transition: width 0.1s ease-out;
 }
 
@@ -591,7 +591,7 @@ body.preloader-active {
 }
 
 .terminal-command-line:focus-within {
-  border-color: #00f0ff !important;
+  border-color: #ffae00 !important;
   box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
 }
 
@@ -629,10 +629,10 @@ body.preloader-active {
 }
 
 .decrypt-btn:hover {
-  background: #00f0ff !important;
+  background: #ffae00 !important;
   color: #000 !important;
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
-  border-color: #00f0ff !important;
+  border-color: #ffae00 !important;
   cursor: pointer;
 }
 
@@ -1371,7 +1371,7 @@ body.preloader-active {
   font-weight: 700;
   color: var(--secondary);
   letter-spacing: 0.05em;
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+  text-shadow: 0 0 8px rgba(255, 174, 0, 0.3);
   margin-bottom: 0.5rem;
 }
 
@@ -1393,7 +1393,7 @@ body.preloader-active {
 .terminal-card:hover {
   transform: rotateY(0deg) rotateX(0deg) scale(1.01);
   border-color: var(--secondary) !important;
-  box-shadow: 0 25px 50px rgba(0, 229, 255, 0.15);
+  box-shadow: 0 25px 50px rgba(255, 174, 0, 0.15);
 }
 
 .terminal-header {
@@ -2808,8 +2808,8 @@ body.preloader-active {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(255, 90, 0, 0.12);
   }
   100% {
-    border-color: rgba(0, 229, 255, 0.6);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 229, 255, 0.25);
+    border-color: rgba(255, 174, 0, 0.6);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 174, 0, 0.25);
   }
 }
 
@@ -2929,7 +2929,7 @@ body.preloader-active {
 }
 
 /* Custom Skill/Interest Brand Colors */
-.tech-icon-color { color: #00f0ff; }
+.tech-icon-color { color: #ffae00; }
 .trading-icon-color { color: #00ff66; }
 .travelling-icon-color { color: #ffae00; }
 .learning-icon-color { color: #d400ff; }
@@ -2938,12 +2938,12 @@ body.preloader-active {
 
 /* Custom Interest Brand Card Hover Glows */
 .tech-interest:hover {
-  border-color: #00f0ff !important;
+  border-color: #ffae00 !important;
   box-shadow: 0 20px 45px rgba(0, 240, 255, 0.22) !important;
   background: rgba(0, 240, 255, 0.05) !important;
 }
 .tech-interest:hover .interest-icon {
-  border-color: #00f0ff !important;
+  border-color: #ffae00 !important;
   background: rgba(0, 240, 255, 0.15) !important;
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.3) !important;
   color: #fff !important;
@@ -3104,7 +3104,7 @@ body.preloader-active {
 .logo:hover .logo-icon-wrapper {
   color: var(--secondary);
   border-color: var(--secondary);
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 15px rgba(255, 174, 0, 0.25);
   transform: rotate(180deg);
 }
 
@@ -3189,7 +3189,7 @@ body.preloader-active {
 
 .terminal-command-line:focus-within {
   border-color: var(--secondary) !important;
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.3) !important;
+  box-shadow: 0 0 12px rgba(255, 174, 0, 0.3) !important;
 }
 
 #visitorKeyInput {
