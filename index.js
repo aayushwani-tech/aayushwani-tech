@@ -285,6 +285,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (visitorSapInput) visitorSapInput.disabled = true;
     if (decryptBtn) decryptBtn.disabled = true;
     
+    if (consoleLogs) {
+      consoleLogs.style.display = 'block';
+    }
+    
     // Speed up the 3D core spin speed dynamically!
     autoRotateSpeed = 0.08;
 

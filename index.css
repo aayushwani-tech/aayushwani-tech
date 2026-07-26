@@ -445,152 +445,88 @@ body.preloader-active {
   transition: width 0.1s ease-out;
 }
 
+.welcome-portal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 2;
+  position: relative;
+  width: 90vw;
+  max-width: 440px;
+}
+
+.holo-lock-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -0.2rem;
+}
+
+.lock-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(168, 85, 247, 0.45);
+}
+
+.ring-outer {
+  width: 86px;
+  height: 86px;
+  border-color: rgba(168, 85, 247, 0.4);
+  animation: spinClockwise 15s linear infinite;
+}
+
+.ring-inner {
+  width: 72px;
+  height: 72px;
+  border-color: rgba(168, 85, 247, 0.75);
+  border-style: dotted;
+  animation: spinCounterClockwise 10s linear infinite;
+}
+
+.lock-icon-circle {
+  width: 58px;
+  height: 58px;
+  background: rgba(10, 8, 24, 0.65);
+  border: 1.5px solid rgba(168, 85, 247, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  z-index: 2;
+}
+
+.padlock-svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.6));
+}
+
 .hacking-console-card {
   position: relative;
   z-index: 2;
-  width: 90vw;
-  max-width: 480px;
-  aspect-ratio: 1 / 1;
-  height: auto;
-  padding: 1.8rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  border: 1.5px solid rgba(168, 85, 247, 0.35);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(168, 85, 247, 0.12);
-  background: 
-    linear-gradient(rgba(168, 85, 247, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
-    radial-gradient(circle at center, rgba(7, 11, 24, 0.88) 0%, rgba(8, 8, 12, 0.96) 100%);
-  background-size: 100% 4px, 100% 100%;
-  border-radius: 0 !important;
-  animation: consoleGlow 4s infinite alternate ease-in-out;
-}
-
-#visitorSapInput {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-family: monospace;
-  font-size: 16px;
-  outline: none;
-}
-
-.console-form-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
   width: 100%;
+  padding: 2.2rem 2rem;
+  border: 1.2px solid rgba(168, 85, 247, 0.28) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.12) !important;
+  background: rgba(8, 7, 16, 0.88) !important;
+  backdrop-filter: blur(20px);
+  border-radius: 12px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
 }
-
-@media (max-height: 540px), (orientation: landscape) and (max-height: 580px) {
-  .hacking-console-card {
-    flex-direction: row !important;
-    width: 95vw !important;
-    max-width: 720px !important;
-    height: 92vh !important;
-    aspect-ratio: auto !important;
-    padding: 1.2rem 2rem !important;
-    gap: 1.5rem !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-  }
-  
-  .hacking-header {
-    position: absolute !important;
-    top: 0.4rem !important;
-    left: 2rem !important;
-    right: 2rem !important;
-  }
-  
-  .holo-core-wrapper {
-    width: 150px !important;
-    height: 150px !important;
-    margin-bottom: 0 !important;
-    flex-shrink: 0 !important;
-  }
-  
-  .console-form-content {
-    width: 60% !important;
-    gap: 0.4rem !important;
-    align-items: stretch !important;
-  }
-  
-  .console-heading {
-    font-size: 1.2rem !important;
-    text-align: left !important;
-  }
-  
-  .console-subtext {
-    font-size: 0.75rem !important;
-    text-align: left !important;
-    margin-top: -0.2rem !important;
-  }
-  
-  .terminal-command-line {
-    padding: 0.3rem 0.5rem !important;
-  }
-  
-  .decrypt-btn {
-    padding: 0.5rem 0.8rem !important;
-  }
-  
-  .console-logs-window {
-    height: 55px !important;
-    padding: 0.4rem 0.6rem !important;
-  }
-}
-
-@keyframes consoleGlow {
-  0% {
-    border-color: rgba(168, 85, 247, 0.35);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(168, 85, 247, 0.12);
-  }
-  100% {
-    border-color: rgba(0, 229, 255, 0.6);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 229, 255, 0.25);
-  }
-}
-
 
 .hacking-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: var(--primary);
-  letter-spacing: 0.08em;
-  opacity: 0.85;
-  margin-bottom: 0.5rem;
-}
-
-.pulse-security-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--primary);
-  box-shadow: 0 0 10px var(--primary);
-  animation: secDotPulse 1.5s infinite alternate ease-in-out;
-}
-
-@keyframes secDotPulse {
-  0% { transform: scale(0.9); opacity: 0.6; }
-  100% { transform: scale(1.15); opacity: 1; }
-}
-
-/* 3D Holographic Orbiting Core Node */
-/* 3D Holographic Orbiting Core Node */
-.holo-core-wrapper {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  margin-bottom: 0.2rem;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -3196,6 +3132,147 @@ body.preloader-active {
   color: var(--text-primary);
   text-transform: uppercase;
   animation: logoTextFlicker 3s infinite alternate ease-in-out;
+}
+
+.hacking-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: var(--primary);
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+  margin-bottom: 0.2rem;
+}
+
+.key-icon {
+  font-size: 0.85rem;
+}
+
+.console-form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.console-heading {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-bottom: 0.1rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.console-subtext {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.terminal-command-line {
+  width: 100%;
+  border: 1.5px solid rgba(168, 85, 247, 0.32);
+  border-radius: 8px !important;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.65rem 1rem;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.terminal-command-line:focus-within {
+  border-color: var(--secondary) !important;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.3) !important;
+}
+
+#visitorKeyInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.95rem;
+  text-align: center;
+  outline: none;
+}
+
+#visitorKeyInput::placeholder {
+  color: rgba(255, 255, 255, 0.32) !important;
+}
+
+.decrypt-btn {
+  width: 100%;
+  background: #fff !important;
+  color: #0c0b18 !important;
+  border: none !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.85rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  padding: 0.85rem 1.2rem !important;
+  border-radius: 8px !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.12);
+}
+
+.decrypt-btn:hover {
+  background: #e2d8ff !important;
+  color: #0c0b18 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
+}
+
+.console-logs-window {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-family: monospace;
+  font-size: 0.72rem;
+  max-height: 100px;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.log-row {
+  display: block;
+}
+
+.log-row.cmd { color: var(--primary); }
+.log-row.info { color: var(--text-muted); }
+.log-row.success { color: #27c93f; text-shadow: 0 0 5px rgba(39, 201, 63, 0.2); }
+.log-row.alert { color: var(--secondary); }
+
+.welcome-footer-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.05em;
+  margin-top: 0.4rem;
+}
+
+.footer-dot {
+  font-size: 0.75rem;
 }
 
 @keyframes logoTextFlicker {
