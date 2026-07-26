@@ -3643,3 +3643,84 @@ body.preloader-active {
   margin-bottom: 3rem;
 }
 
+/* ==========================================================================
+   CUSTOM CYBER CURSOR
+   ========================================================================== */
+
+/* Hide the cursor div by default (touch screens don't need it) */
+.custom-cursor {
+  display: none;
+}
+
+/* Only show on real pointer (mouse) devices */
+@media (pointer: fine) {
+  /* Hide native cursor on the whole page */
+  * {
+    cursor: none !important;
+  }
+
+  .custom-cursor {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .custom-cursor.active {
+    opacity: 1;
+  }
+
+  /* Outer spinning dashed ring */
+  .cursor-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(255, 138, 61, 0.8);
+    box-shadow: 0 0 10px rgba(255, 138, 61, 0.3);
+    animation: cursorSpin 2.5s linear infinite;
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Inner glowing dot */
+  .cursor-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #FF8A3D;
+    box-shadow: 0 0 12px #FF8A3D;
+    transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  /* Hover state — ring expands and turns pink */
+  .custom-cursor.hovering .cursor-ring {
+    width: 46px;
+    height: 46px;
+    border: 1.5px solid rgba(255, 45, 122, 0.75);
+    box-shadow: 0 0 18px rgba(255, 45, 122, 0.4);
+    animation-duration: 1.2s;
+  }
+
+  .custom-cursor.hovering .cursor-dot {
+    background-color: #FF2D7A;
+    box-shadow: 0 0 14px #FF2D7A;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+
+  @keyframes cursorSpin {
+    0%   { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+}
