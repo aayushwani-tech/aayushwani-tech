@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         ctx.fillStyle = 'rgba(255, 220, 180, 0.98)'; // Cyberpunk orange matrix rain
         ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgb(255, 90, 0)';
+        ctx.shadowColor = 'rgb(255, 106, 43)';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
-        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(255, 174, 0, 0.55)' : 'rgba(255, 60, 0, 0.4)';
+        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(255, 90, 95, 0.55)' : 'rgba(255, 45, 122, 0.4)';
         ctx.shadowBlur = 2;
         ctx.fillText(text, i * fontSize, (drops[i] - 1) * fontSize);
         
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         x: xa, y: y, z: za,
         type: 'strandA',
         vx: 0, vy: 0, vz: 0,
-        color: 'rgba(255, 90, 0, 0.95)'
+        color: 'rgba(255, 106, 43, 0.95)'
       });
       
       // Strand B (Pink)
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         x: xb, y: y, z: zb,
         type: 'strandB',
         vx: 0, vy: 0, vz: 0,
-        color: 'rgba(255, 60, 0, 0.95)'
+        color: 'rgba(255, 45, 122, 0.95)'
       });
       
       const idxA = points.length - 2;
@@ -210,15 +210,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link.type === 'rung') {
           // base rungs connect A (purple) and B (pink)
           const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-          grad.addColorStop(0, `rgba(255, 90, 0, ${alpha * 0.55})`);
-          grad.addColorStop(1, `rgba(255, 60, 0, ${alpha * 0.55})`);
+          grad.addColorStop(0, `rgba(255, 106, 43, ${alpha * 0.55})`);
+          grad.addColorStop(1, `rgba(255, 45, 122, ${alpha * 0.55})`);
           ctx.strokeStyle = grad;
           ctx.lineWidth = 1.1;
         } else if (link.type === 'backboneA') {
-          ctx.strokeStyle = `rgba(255, 174, 0, ${alpha * 1.5})`;
+          ctx.strokeStyle = `rgba(255, 90, 95, ${alpha * 1.5})`;
           ctx.lineWidth = 1.35;
         } else {
-          ctx.strokeStyle = `rgba(255, 174, 0, ${alpha * 1.5})`;
+          ctx.strokeStyle = `rgba(255, 90, 95, ${alpha * 1.5})`;
           ctx.lineWidth = 1.35;
         }
         ctx.stroke();
@@ -840,7 +840,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 90, 0, 0.45)';
+      ctx.fillStyle = 'rgba(255, 106, 43, 0.45)';
       ctx.fill();
     }
   }
@@ -880,7 +880,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(255, 90, 0, ${0.15 * (1 - dist / 100)})`;
+          ctx.strokeStyle = `rgba(255, 106, 43, ${0.15 * (1 - dist / 100)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }

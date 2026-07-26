@@ -4,23 +4,23 @@
 :root {
   /* Color Palette */
   --bg-dark: #030303;
-  --bg-card: rgba(10, 10, 12, 0.68);
-  --bg-card-hover: rgba(20, 20, 24, 0.88);
-  --border-color: rgba(255, 90, 0, 0.15);
-  --border-hover: rgba(255, 174, 0, 0.5);
+  --bg-card: rgba(26, 26, 34, 0.68);
+  --bg-card-hover: rgba(38, 38, 48, 0.88);
+  --border-color: rgba(255, 106, 43, 0.15);
+  --border-hover: rgba(255, 138, 61, 0.55);
   
-  --text-primary: hsl(0, 0%, 98%);
-  --text-muted: hsl(220, 14%, 72%);
-  --text-accent: hsl(38, 100%, 70%); /* Glowing Cyan */
+  --text-primary: #FFFFFF;
+  --text-muted: #CFCFCF;
+  --text-accent: #FF8A3D; /* Glowing Amber/Orange */
   
-  --primary: #ff5a00; /* Cyberpunk Purple */
-  --primary-glow: rgba(255, 90, 0, 0.25);
-  --secondary: #ffae00; /* Cyberpunk Cyan */
-  --accent: #ff3c00; /* Cyberpunk Pink */
+  --primary: #FF6A2B; /* Bright Orange */
+  --primary-glow: rgba(255, 106, 43, 0.25);
+  --secondary: #FF5A5F; /* Coral */
+  --accent: #FF2D7A; /* Hot Pink */
   
-  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   --gradient-text: linear-gradient(135deg, #ffffff 10%, var(--text-accent) 50%, var(--accent) 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(255, 90, 0, 0.5) 0%, rgba(255, 174, 0, 0.5) 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(255, 106, 43, 0.5) 0%, rgba(255, 45, 122, 0.5) 100%);
 
   /* Shadows & Glassmorphism */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -189,8 +189,8 @@ img, svg {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  border-color: rgba(255, 90, 0, 0.25);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 90, 0, 0.08);
+  border-color: rgba(255, 106, 43, 0.25);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 106, 43, 0.08);
   z-index: 2;
 }
 
@@ -205,9 +205,9 @@ img, svg {
 .scanner-outer {
   width: 580px;
   height: 580px;
-  border: 1.5px dashed rgba(255, 90, 0, 0.15);
-  border-top-color: rgba(255, 90, 0, 0.6);
-  border-bottom-color: rgba(255, 90, 0, 0.6);
+  border: 1.5px dashed rgba(255, 106, 43, 0.15);
+  border-top-color: rgba(255, 106, 43, 0.6);
+  border-bottom-color: rgba(255, 106, 43, 0.6);
   animation: welcomeScanClockwise 25s linear infinite;
 }
 
@@ -240,8 +240,8 @@ img, svg {
 .hacking-terminal {
   position: relative;
   background: rgba(8, 8, 12, 0.96) !important;
-  border: 1px solid rgba(255, 90, 0, 0.35) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 90, 0, 0.15) !important;
+  border: 1px solid rgba(255, 106, 43, 0.35) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 106, 43, 0.15) !important;
   padding-top: 1.2rem !important;
   overflow: hidden;
   font-family: monospace !important;
@@ -256,7 +256,7 @@ img, svg {
   margin-bottom: 2rem;
   padding: 0.8rem 1.5rem;
   background: rgba(0, 0, 0, 0.4);
-  border-bottom: 1.2px solid rgba(255, 90, 0, 0.2);
+  border-bottom: 1.2px solid rgba(255, 106, 43, 0.2);
 }
 
 .terminal-dot {
@@ -289,7 +289,7 @@ img, svg {
   background-clip: unset !important;
   -webkit-text-fill-color: unset !important;
   letter-spacing: 0.06em;
-  text-shadow: 0 0 10px rgba(255, 90, 0, 0.4);
+  text-shadow: 0 0 10px rgba(255, 106, 43, 0.4);
 }
 
 .welcome-subtext {
@@ -306,7 +306,7 @@ img, svg {
   width: 100%;
   gap: 0.6rem;
   background: rgba(0, 0, 0, 0.35);
-  border: 1.2px solid rgba(255, 90, 0, 0.25);
+  border: 1.2px solid rgba(255, 106, 43, 0.25);
   border-radius: 8px;
   padding: 0.35rem 0.8rem;
   transition: var(--transition-normal);
@@ -314,7 +314,7 @@ img, svg {
 
 .terminal-input-group:focus-within {
   border-color: var(--primary);
-  box-shadow: 0 0 15px rgba(255, 90, 0, 0.15);
+  box-shadow: 0 0 15px rgba(255, 106, 43, 0.15);
 }
 
 .prompt-user {
@@ -440,8 +440,8 @@ body.preloader-active {
 .preloader-progress-bar {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #ffae00, #ff3c00);
-  box-shadow: 0 0 10px #ffae00;
+  background: linear-gradient(90deg, #FF5A5F, #FF2D7A);
+  box-shadow: 0 0 10px #FF5A5F;
   transition: width 0.1s ease-out;
 }
 
@@ -469,20 +469,20 @@ body.preloader-active {
 .lock-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1.5px dashed rgba(255, 90, 0, 0.45);
+  border: 1.5px dashed rgba(255, 106, 43, 0.45);
 }
 
 .ring-outer {
   width: 86px;
   height: 86px;
-  border-color: rgba(255, 90, 0, 0.4);
+  border-color: rgba(255, 106, 43, 0.4);
   animation: spinClockwise 15s linear infinite;
 }
 
 .ring-inner {
   width: 72px;
   height: 72px;
-  border-color: rgba(255, 90, 0, 0.75);
+  border-color: rgba(255, 106, 43, 0.75);
   border-style: dotted;
   animation: spinCounterClockwise 10s linear infinite;
 }
@@ -491,13 +491,13 @@ body.preloader-active {
   width: 58px;
   height: 58px;
   background: rgba(10, 8, 24, 0.65);
-  border: 1.5px solid rgba(255, 90, 0, 0.6);
+  border: 1.5px solid rgba(255, 106, 43, 0.6);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 0 20px rgba(255, 90, 0, 0.35);
+  box-shadow: 0 0 20px rgba(255, 106, 43, 0.35);
   z-index: 2;
 }
 
@@ -505,7 +505,7 @@ body.preloader-active {
   width: 20px;
   height: 20px;
   color: #fff;
-  filter: drop-shadow(0 0 5px rgba(255, 90, 0, 0.6));
+  filter: drop-shadow(0 0 5px rgba(255, 106, 43, 0.6));
 }
 
 .hacking-console-card {
@@ -513,8 +513,8 @@ body.preloader-active {
   z-index: 2;
   width: 100%;
   padding: 2.2rem 2rem;
-  border: 1.2px solid rgba(255, 90, 0, 0.28) !important;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 90, 0, 0.12) !important;
+  border: 1.2px solid rgba(255, 106, 43, 0.28) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 106, 43, 0.12) !important;
   background: rgba(8, 7, 16, 0.88) !important;
   backdrop-filter: blur(20px);
   border-radius: 12px !important;
@@ -566,7 +566,7 @@ body.preloader-active {
   font-weight: 800;
   color: var(--primary);
   letter-spacing: 0.08em;
-  text-shadow: 0 0 12px rgba(255, 90, 0, 0.45);
+  text-shadow: 0 0 12px rgba(255, 106, 43, 0.45);
 }
 
 .console-subtext {
@@ -583,7 +583,7 @@ body.preloader-active {
   width: 100%;
   gap: 0.5rem;
   background: rgba(0, 0, 0, 0.45);
-  border: 1.2px solid rgba(255, 90, 0, 0.35);
+  border: 1.2px solid rgba(255, 106, 43, 0.35);
   border-radius: 0 !important;
   padding: 0.4rem 0.6rem;
   font-family: monospace;
@@ -591,7 +591,7 @@ body.preloader-active {
 }
 
 .terminal-command-line:focus-within {
-  border-color: #ffae00 !important;
+  border-color: #FF5A5F !important;
   box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
 }
 
@@ -624,15 +624,15 @@ body.preloader-active {
   letter-spacing: 0.05em !important;
   padding: 0.6rem 0.8rem !important;
   border-radius: 0 !important;
-  box-shadow: 0 0 15px rgba(255, 90, 0, 0.2);
+  box-shadow: 0 0 15px rgba(255, 106, 43, 0.2);
   transition: all 0.25s ease;
 }
 
 .decrypt-btn:hover {
-  background: #ffae00 !important;
+  background: #FF5A5F !important;
   color: #000 !important;
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
-  border-color: #ffae00 !important;
+  border-color: #FF5A5F !important;
   cursor: pointer;
 }
 
@@ -640,7 +640,7 @@ body.preloader-active {
   width: 100%;
   height: 65px;
   background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 90, 0, 0.15);
+  border: 1px solid rgba(255, 106, 43, 0.15);
   border-radius: 0 !important;
   padding: 0.6rem 0.8rem;
   overflow-y: auto;
@@ -744,7 +744,7 @@ body.preloader-active {
   height: 450px;
   background: radial-gradient(
     circle, 
-    rgba(255, 90, 0, 0.12) 0%, 
+    rgba(255, 106, 43, 0.12) 0%, 
     rgba(255, 0, 102, 0.04) 40%, 
     transparent 70%
   );
@@ -943,7 +943,7 @@ body.preloader-active {
 .glass-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-hover);
-  box-shadow: 0 20px 45px rgba(255, 90, 0, 0.15);
+  box-shadow: 0 20px 45px rgba(255, 106, 43, 0.15);
   transform: translateY(-6px);
 }
 
@@ -1045,12 +1045,12 @@ body.preloader-active {
 .btn-primary {
   background: var(--gradient-primary);
   color: #fff;
-  box-shadow: 0 4px 15px rgba(255, 90, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 106, 43, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255, 90, 0, 0.5);
+  box-shadow: 0 6px 25px rgba(255, 106, 43, 0.5);
   opacity: 0.95;
 }
 
@@ -1106,9 +1106,9 @@ body.preloader-active {
   max-width: 1100px;
   height: 64px;
   background-color: rgba(15, 12, 10, 0.8);
-  border-color: rgba(255, 90, 0, 0.15);
+  border-color: rgba(255, 106, 43, 0.15);
   border-radius: 50px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 90, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 106, 43, 0.08);
   backdrop-filter: blur(var(--blur-val));
   -webkit-backdrop-filter: blur(var(--blur-val));
 }
@@ -1172,7 +1172,7 @@ body.preloader-active {
   transform: rotateX(12deg) rotateY(-18deg) translateZ(5px);
   box-shadow: 
     -1px 1px 0px rgba(255, 255, 255, 0.15),
-    -2px 2px 0px rgba(255, 90, 0, 0.55),
+    -2px 2px 0px rgba(255, 106, 43, 0.55),
     -3px 3px 0px rgba(255, 0, 102, 0.55),
     -6px 6px 12px rgba(0, 0, 0, 0.5);
   text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.6);
@@ -1188,7 +1188,7 @@ body.preloader-active {
     -3px 3px 0px var(--primary),
     -5px 5px 0px var(--secondary),
     -10px 10px 20px rgba(0, 0, 0, 0.4),
-    0 0 15px rgba(255, 90, 0, 0.25);
+    0 0 15px rgba(255, 106, 43, 0.25);
 }
 
 .logo-text {
@@ -1289,8 +1289,8 @@ body.preloader-active {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 90, 0, 0.1);
-  border: 1px solid rgba(255, 90, 0, 0.22);
+  background: rgba(255, 106, 43, 0.1);
+  border: 1px solid rgba(255, 106, 43, 0.22);
   color: var(--text-accent);
   padding: 0.45rem 0.9rem;
   border-radius: 50px;
@@ -1298,7 +1298,7 @@ body.preloader-active {
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  box-shadow: 0 0 15px rgba(255, 90, 0, 0.05);
+  box-shadow: 0 0 15px rgba(255, 106, 43, 0.05);
 }
 
 .badge-dot {
@@ -1314,15 +1314,15 @@ body.preloader-active {
 @keyframes pulseDot {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 90, 0, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 106, 43, 0.7);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(255, 90, 0, 0);
+    box-shadow: 0 0 0 6px rgba(255, 106, 43, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 90, 0, 0);
+    box-shadow: 0 0 0 0 rgba(255, 106, 43, 0);
   }
 }
 
@@ -1371,7 +1371,7 @@ body.preloader-active {
   font-weight: 700;
   color: var(--secondary);
   letter-spacing: 0.05em;
-  text-shadow: 0 0 8px rgba(255, 174, 0, 0.3);
+  text-shadow: 0 0 8px rgba(255, 90, 95, 0.3);
   margin-bottom: 0.5rem;
 }
 
@@ -1380,11 +1380,11 @@ body.preloader-active {
   width: 100%;
   max-width: 520px;
   background: rgba(10, 8, 24, 0.55) !important;
-  border: 1px solid rgba(255, 90, 0, 0.25) !important;
+  border: 1px solid rgba(255, 106, 43, 0.25) !important;
   border-radius: 8px !important;
   margin: 1.2rem 0;
   overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 90, 0, 0.06);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 106, 43, 0.06);
   backdrop-filter: blur(15px);
   transform: rotateY(-5deg) rotateX(5deg);
   transition: transform var(--transition-normal), border-color var(--transition-normal);
@@ -1393,7 +1393,7 @@ body.preloader-active {
 .terminal-card:hover {
   transform: rotateY(0deg) rotateX(0deg) scale(1.01);
   border-color: var(--secondary) !important;
-  box-shadow: 0 25px 50px rgba(255, 174, 0, 0.15);
+  box-shadow: 0 25px 50px rgba(255, 90, 95, 0.15);
 }
 
 .terminal-header {
@@ -1402,7 +1402,7 @@ body.preloader-active {
   justify-content: space-between;
   background: rgba(0, 0, 0, 0.35);
   padding: 0.6rem 1rem;
-  border-bottom: 1px solid rgba(255, 90, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 106, 43, 0.15);
 }
 
 .terminal-left {
@@ -1496,14 +1496,14 @@ body.preloader-active {
   width: 100%;
   max-width: 440px;
   background: rgba(10, 8, 24, 0.55) !important;
-  border: 1px solid rgba(255, 90, 0, 0.25) !important;
+  border: 1px solid rgba(255, 106, 43, 0.25) !important;
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   position: relative;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 90, 0, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 106, 43, 0.08);
   backdrop-filter: blur(15px);
 }
 
@@ -1514,7 +1514,7 @@ body.preloader-active {
   font-family: monospace;
   font-size: 0.7rem;
   color: var(--text-muted);
-  border-bottom: 1px solid rgba(255, 90, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 106, 43, 0.15);
   padding-bottom: 0.6rem;
 }
 
@@ -1548,10 +1548,10 @@ body.preloader-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, rgba(255, 90, 0, 0.08) 0%, rgba(0, 0, 0, 0.65) 75%);
+  background: radial-gradient(circle, rgba(255, 106, 43, 0.08) 0%, rgba(0, 0, 0, 0.65) 75%);
   box-shadow: 
-    inset 0 0 30px rgba(255, 90, 0, 0.2),
-    0 0 25px rgba(255, 90, 0, 0.15);
+    inset 0 0 30px rgba(255, 106, 43, 0.2),
+    0 0 25px rgba(255, 106, 43, 0.15);
 }
 
 .arc-reactor::before {
@@ -1559,7 +1559,7 @@ body.preloader-active {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   border-radius: 50%;
-  border: 2px dashed rgba(255, 90, 0, 0.35);
+  border: 2px dashed rgba(255, 106, 43, 0.35);
   animation: spinClockwise 25s linear infinite;
 }
 
@@ -1598,7 +1598,7 @@ body.preloader-active {
 .inner-ring {
   width: 96px;
   height: 96px;
-  border: 3px double rgba(255, 90, 0, 0.6);
+  border: 3px double rgba(255, 106, 43, 0.6);
   border-left-color: transparent;
   animation: spinCounterClockwise 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -1607,13 +1607,13 @@ body.preloader-active {
   width: 66px;
   height: 66px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 30%, rgba(255, 90, 0, 0.85) 70%);
+  background: radial-gradient(circle, #ffffff 30%, rgba(255, 106, 43, 0.85) 70%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: 
-    0 0 25px 5px rgba(255, 90, 0, 0.7),
+    0 0 25px 5px rgba(255, 106, 43, 0.7),
     inset 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 5;
 }
@@ -1652,7 +1652,7 @@ body.preloader-active {
   gap: 0.45rem;
   font-family: monospace;
   font-size: 0.8rem;
-  border-top: 1px solid rgba(255, 90, 0, 0.15);
+  border-top: 1px solid rgba(255, 106, 43, 0.15);
   padding-top: 0.8rem;
 }
 
@@ -1675,10 +1675,10 @@ body.preloader-active {
   font-size: 0.68rem;
   color: var(--primary);
   text-align: center;
-  border-top: 1px solid rgba(255, 90, 0, 0.15);
+  border-top: 1px solid rgba(255, 106, 43, 0.15);
   padding-top: 0.6rem;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 5px rgba(255, 90, 0, 0.35);
+  text-shadow: 0 0 5px rgba(255, 106, 43, 0.35);
 }
 
 .hero-scroll {
@@ -1805,8 +1805,8 @@ body.preloader-active {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: rgba(255, 90, 0, 0.08);
-  border: 1px solid rgba(255, 90, 0, 0.18);
+  background: rgba(255, 106, 43, 0.08);
+  border: 1px solid rgba(255, 106, 43, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1816,11 +1816,11 @@ body.preloader-active {
 }
 
 .metric-card:hover .metric-icon {
-  background: rgba(255, 90, 0, 0.15);
+  background: rgba(255, 106, 43, 0.15);
   border-color: var(--primary);
   color: #fff;
   transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 15px rgba(255, 90, 0, 0.2);
+  box-shadow: 0 0 15px rgba(255, 106, 43, 0.2);
 }
 
 .metric-info {
@@ -1880,8 +1880,8 @@ body.preloader-active {
 
 .code-tab.active {
   color: var(--primary);
-  background: rgba(255, 90, 0, 0.08);
-  border-color: rgba(255, 90, 0, 0.2);
+  background: rgba(255, 106, 43, 0.08);
+  border-color: rgba(255, 106, 43, 0.2);
 }
 
 .tab-pane {
@@ -1973,8 +1973,8 @@ body.preloader-active {
 .skill-card:hover .skill-icon {
   transform: scale(1.15) rotate(12deg);
   border-color: var(--primary);
-  box-shadow: 0 0 20px rgba(255, 90, 0, 0.3);
-  background: rgba(255, 90, 0, 0.1);
+  box-shadow: 0 0 20px rgba(255, 106, 43, 0.3);
+  background: rgba(255, 106, 43, 0.1);
 }
 
 /* Specific Skill Brand Card Hover Glows */
@@ -2106,8 +2106,8 @@ body.preloader-active {
   width: 38px;
   height: 38px;
   border-radius: 8px;
-  background: rgba(255, 90, 0, 0.08);
-  border: 1px solid rgba(255, 90, 0, 0.2);
+  background: rgba(255, 106, 43, 0.08);
+  border: 1px solid rgba(255, 106, 43, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2120,9 +2120,9 @@ body.preloader-active {
 }
 
 .project-card:hover .project-logo {
-  background: rgba(255, 90, 0, 0.15);
+  background: rgba(255, 106, 43, 0.15);
   border-color: var(--primary);
-  box-shadow: 0 0 15px rgba(255, 90, 0, 0.25);
+  box-shadow: 0 0 15px rgba(255, 106, 43, 0.25);
 }
 
 .project-card:hover .project-logo-svg {
@@ -2788,8 +2788,8 @@ body.preloader-active {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(255, 90, 0, 0.03) 40%,
-    rgba(255, 90, 0, 0.12) 90%,
+    rgba(255, 106, 43, 0.03) 40%,
+    rgba(255, 106, 43, 0.12) 90%,
     transparent 100%
   );
   animation: scanlineSweep 6s linear infinite;
@@ -2804,12 +2804,12 @@ body.preloader-active {
 
 @keyframes consoleGlow {
   0% {
-    border-color: rgba(255, 90, 0, 0.35);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(255, 90, 0, 0.12);
+    border-color: rgba(255, 106, 43, 0.35);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(255, 106, 43, 0.12);
   }
   100% {
-    border-color: rgba(255, 174, 0, 0.6);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 174, 0, 0.25);
+    border-color: rgba(255, 90, 95, 0.6);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 90, 95, 0.25);
   }
 }
 
@@ -2847,16 +2847,16 @@ body.preloader-active {
   width: 100%;
   min-height: 380px;
   background: 
-    linear-gradient(rgba(255, 90, 0, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(rgba(255, 106, 43, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
     radial-gradient(circle at center, rgba(7, 11, 24, 0.8) 0%, rgba(8, 8, 12, 0.95) 100%);
   background-size: 100% 4px, 100% 100%;
-  border: 1.5px solid rgba(255, 90, 0, 0.22);
+  border: 1.5px solid rgba(255, 106, 43, 0.22);
   border-radius: 16px;
   padding: 2.2rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 90, 0, 0.1);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 106, 43, 0.1);
   overflow: hidden;
   position: relative;
 }
@@ -2871,7 +2871,7 @@ body.preloader-active {
   min-height: 250px;
   background: rgba(0, 0, 0, 0.45);
   font-size: 0.8rem;
-  border-color: rgba(255, 90, 0, 0.15);
+  border-color: rgba(255, 106, 43, 0.15);
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
@@ -2929,21 +2929,21 @@ body.preloader-active {
 }
 
 /* Custom Skill/Interest Brand Colors */
-.tech-icon-color { color: #ffae00; }
+.tech-icon-color { color: #FF5A5F; }
 .trading-icon-color { color: #00ff66; }
-.travelling-icon-color { color: #ffae00; }
+.travelling-icon-color { color: #FF5A5F; }
 .learning-icon-color { color: #d400ff; }
 .innovation-icon-color { color: #ff0055; }
 .future-icon-color { color: #0055ff; }
 
 /* Custom Interest Brand Card Hover Glows */
 .tech-interest:hover {
-  border-color: #ffae00 !important;
+  border-color: #FF5A5F !important;
   box-shadow: 0 20px 45px rgba(0, 240, 255, 0.22) !important;
   background: rgba(0, 240, 255, 0.05) !important;
 }
 .tech-interest:hover .interest-icon {
-  border-color: #ffae00 !important;
+  border-color: #FF5A5F !important;
   background: rgba(0, 240, 255, 0.15) !important;
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.3) !important;
   color: #fff !important;
@@ -2962,14 +2962,14 @@ body.preloader-active {
 }
 
 .travelling-interest:hover {
-  border-color: #ffae00 !important;
-  box-shadow: 0 20px 45px rgba(255, 174, 0, 0.22) !important;
-  background: rgba(255, 174, 0, 0.05) !important;
+  border-color: #FF5A5F !important;
+  box-shadow: 0 20px 45px rgba(255, 90, 95, 0.22) !important;
+  background: rgba(255, 90, 95, 0.05) !important;
 }
 .travelling-interest:hover .interest-icon {
-  border-color: #ffae00 !important;
-  background: rgba(255, 174, 0, 0.15) !important;
-  box-shadow: 0 0 20px rgba(255, 174, 0, 0.3) !important;
+  border-color: #FF5A5F !important;
+  background: rgba(255, 90, 95, 0.15) !important;
+  box-shadow: 0 0 20px rgba(255, 90, 95, 0.3) !important;
   color: #fff !important;
 }
 
@@ -3090,21 +3090,21 @@ body.preloader-active {
   position: relative;
   width: 32px;
   height: 32px;
-  background: rgba(255, 90, 0, 0.08);
-  border: 1.2px solid rgba(255, 90, 0, 0.25);
+  background: rgba(255, 106, 43, 0.08);
+  border: 1.2px solid rgba(255, 106, 43, 0.25);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
-  box-shadow: 0 0 10px rgba(255, 90, 0, 0.1);
+  box-shadow: 0 0 10px rgba(255, 106, 43, 0.1);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo:hover .logo-icon-wrapper {
   color: var(--secondary);
   border-color: var(--secondary);
-  box-shadow: 0 0 15px rgba(255, 174, 0, 0.25);
+  box-shadow: 0 0 15px rgba(255, 90, 95, 0.25);
   transform: rotate(180deg);
 }
 
@@ -3179,7 +3179,7 @@ body.preloader-active {
 
 .terminal-command-line {
   width: 100%;
-  border: 1.5px solid rgba(255, 90, 0, 0.32);
+  border: 1.5px solid rgba(255, 106, 43, 0.32);
   border-radius: 8px !important;
   background: rgba(0, 0, 0, 0.45);
   padding: 0.65rem 1rem;
@@ -3189,7 +3189,7 @@ body.preloader-active {
 
 .terminal-command-line:focus-within {
   border-color: var(--secondary) !important;
-  box-shadow: 0 0 12px rgba(255, 174, 0, 0.3) !important;
+  box-shadow: 0 0 12px rgba(255, 90, 95, 0.3) !important;
 }
 
 #visitorKeyInput, #visitorSapInput {
@@ -3231,13 +3231,13 @@ body.preloader-active {
   background: #e2d8ff !important;
   color: #0c0b18 !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 90, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 106, 43, 0.3);
 }
 
 .console-logs-window {
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 90, 0, 0.2);
+  border: 1px solid rgba(255, 106, 43, 0.2);
   border-radius: 6px;
   padding: 0.6rem 0.8rem;
   font-family: monospace;
