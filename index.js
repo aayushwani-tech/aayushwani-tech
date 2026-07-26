@@ -255,6 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let sapId = visitorSapInput ? visitorSapInput.value.trim() : '';
     
     if (!name) {
+      playSound('error');
       const nameWrapper = visitorInput ? visitorInput.closest('.terminal-command-line') : null;
       if (nameWrapper) {
         nameWrapper.style.borderColor = '#ef4444';
@@ -355,6 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         setTimeout(() => {
+          playSound('success');
           if (hackingAccess) {
             hackingAccess.classList.add('fade-out');
           }
@@ -1004,5 +1006,135 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     });
   });
+
+  /* ==========================================================================
+     WEB AUDIO SYNTH ENGINE (SAHIL STYLE HUD SOUND EFFECTS)
+     ========================================================================== */
+  const playSound = (type) => {
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      const audioCtx = new AudioContext();
+      
+      if (type === 'hover') {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1900, audioCtx.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.015, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.04);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.04);
+      } else if (type === 'click') {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(950, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1450, audioCtx.currentTime + 0.08);
+        
+        gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.08);
+      } else if (type === 'success') {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(780, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1650, audioCtx.currentTime + 0.18);
+        
+        gainNode.gain.setValueAtTime(0.045, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.18);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.18);
+      } else if (type === 'error') {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(110, audioCtx.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.28);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.28);
+      }
+    } catch (err) {
+      console.warn('Audio play failure:', err);
+    }
+  };
+  window.playSound = playSound;
+
+  // Bind global hover and click sound generators to document elements
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target.closest('a, button, input, textarea, select, .glass-card, .btn, .decrypt-btn, .nav-link, .logo');
+    if (target && target !== window.lastHoveredElement) {
+      playSound('hover');
+      window.lastHoveredElement = target;
+    }
+    if (!target) {
+      window.lastHoveredElement = null;
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('a, button, input, textarea, select, .glass-card, .btn, .decrypt-btn, .nav-link, .logo');
+    if (target) {
+      playSound('click');
+    }
+  });
+
+  /* ==========================================================================
+     CUSTOM CYBER CURSOR MOUSE MOVEMENT
+     ========================================================================== */
+  const customCursor = document.getElementById('customCursor');
+  if (customCursor) {
+    document.addEventListener('mousemove', (e) => {
+      customCursor.style.left = `${e.clientX}px`;
+      customCursor.style.top = `${e.clientY}px`;
+      customCursor.classList.add('active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+      customCursor.classList.remove('active');
+    });
+
+    // Shrink/expand state on hover elements
+    const updateInteractiveListeners = () => {
+      const interactives = document.querySelectorAll('a, button, input, textarea, select, .glass-card, .btn, .decrypt-btn, .nav-link, .logo');
+      interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => customCursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => customCursor.classList.remove('hovering'));
+      });
+    };
+    updateInteractiveListeners();
+    // Re-check periodically for dynamically injected elements
+    setInterval(updateInteractiveListeners, 2000);
+  }
+
+  /* ==========================================================================
+     SCROLL PROGRESS BAR SYNC
+     ========================================================================== */
+  const scrollProgress = document.getElementById('scrollProgress');
+  if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      scrollProgress.style.width = scrolled + '%';
+    });
+  }
 
 });
