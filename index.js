@@ -1124,17 +1124,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateInteractiveListeners, 2000);
   }
 
-  /* ==========================================================================
-     SCROLL PROGRESS BAR SYNC
-     ========================================================================== */
-  const scrollProgress = document.getElementById('scrollProgress');
-  if (scrollProgress) {
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      scrollProgress.style.width = scrolled + '%';
-    });
-  }
-
 });
