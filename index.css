@@ -30,11 +30,7 @@
   
   /* Fonts */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: 'Orbitron', 'Outfit', sans-serif;
-  --font-orbitron: 'Orbitron', sans-serif;
-  --font-chakra: 'Chakra Petch', sans-serif;
-  --font-rajdhani: 'Rajdhani', sans-serif;
-  --font-code: 'Fira Code', monospace;
+  --font-heading: 'Outfit', sans-serif;
   
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -388,6 +384,7 @@ body.preloader-active {
   z-index: 9999999;
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease, visibility 1.2s;
   overflow: hidden;
+  touch-action: none;
 }
 
 .hacking-access-overlay.fade-out {
@@ -1753,45 +1750,22 @@ body.preloader-active {
   font-weight: 700;
   letter-spacing: 0.2em;
   color: var(--text-accent);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: block;
   margin-bottom: 0.8rem;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-
-.section-label::before {
-  content: '';
-  display: inline-block;
-  width: 22px;
-  height: 1.5px;
-  background: var(--primary);
-  border-radius: 2px;
-  opacity: 0.7;
 }
 
 .section-title {
-  font-family: var(--font-orbitron);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-family: var(--font-chakra);
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
   max-width: 600px;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
 }
 
 /* ==========================================================================
@@ -3327,330 +3301,66 @@ body.preloader-active {
    CUSTOM CYBER CURSOR & POINTER OVERRIDES
    ========================================================================== */
 @media (pointer: fine) {
-  /* Hide native OS cursor everywhere */
-  * {
+  body, a, button, input, textarea, select, .glass-card, .btn, .decrypt-btn, .nav-link, .logo {
     cursor: none !important;
   }
-
-  /* Cursor wrapper — positioned via JS transform: translate(x,y) */
+  
   .custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    z-index: 99999999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    /* NO static transform here — JS sets it dynamically */
-  }
-
-  /* Outer spinning dashed ring — centered around the cursor origin */
-  .cursor-ring {
-    position: absolute;
-    top: -16px;
-    left: -16px;
     width: 32px;
     height: 32px;
-    border: 1.5px dashed rgba(255, 138, 61, 0.85);
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 138, 61, 0.3);
-    animation: cursorRingSpin 2.5s linear infinite;
-    transition: width 0.18s ease, height 0.18s ease, top 0.18s ease, left 0.18s ease,
-                border-color 0.18s ease, box-shadow 0.18s ease;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.06s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  /* Inner glowing dot — centered */
+  
+  .custom-cursor.active {
+    opacity: 1;
+  }
+  
+  .cursor-ring {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border: 1.5px dashed rgba(255, 138, 61, 0.45);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 138, 61, 0.15);
+    animation: cursorSpin 8s linear infinite;
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, border-style 0.2s ease;
+  }
+  
   .cursor-dot {
     position: absolute;
-    top: -4px;
-    left: -4px;
-    width: 8px;
-    height: 8px;
+    width: 5px;
+    height: 5px;
     background-color: #FF8A3D;
     border-radius: 50%;
-    box-shadow: 0 0 12px #FF8A3D, 0 0 4px #FF8A3D;
-    transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 0 12px #FF8A3D;
+    transition: transform 0.15s ease, background-color 0.15s ease;
   }
-
-  /* Hover state — ring grows and turns hot pink */
+  
   .custom-cursor.hovering .cursor-ring {
-    top: -23px;
-    left: -23px;
     width: 46px;
     height: 46px;
-    border-style: solid;
-    border-color: rgba(255, 45, 122, 0.8);
-    box-shadow: 0 0 20px rgba(255, 45, 122, 0.4);
-    animation-duration: 1.2s;
+    border: 1.5px solid rgba(255, 45, 122, 0.75);
+    box-shadow: 0 0 15px rgba(255, 45, 122, 0.35);
   }
-
+  
   .custom-cursor.hovering .cursor-dot {
     background-color: #FF2D7A;
-    box-shadow: 0 0 14px #FF2D7A;
-    transform: scale(0.55);
+    box-shadow: 0 0 12px #FF2D7A;
+    transform: scale(0.6);
   }
-
-  @keyframes cursorRingSpin {
-    0%   { transform: rotate(0deg); }
+  
+  @keyframes cursorSpin {
+    0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-}
-
-/* ==========================================================================
-   HUD CORNER CUT CARDS (SAHIL STYLE)
-   ========================================================================== */
-.hud-card {
-  position: relative;
-  background: rgba(26, 26, 34, 0.8);
-  border: 1px solid rgba(255, 106, 43, 0.2);
-  border-radius: 16px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.hud-card:hover {
-  border-color: rgba(255, 106, 43, 0.5);
-  box-shadow: 0 0 30px rgba(255, 106, 43, 0.12), 0 20px 50px rgba(0,0,0,0.6);
-  transform: translateY(-2px);
-}
-
-.hud-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 106, 43, 0.06) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-/* HUD Status Badge (like Sahil's inline chip labels) */
-.hud-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  background: rgba(255, 106, 43, 0.1);
-  border: 1px solid rgba(255, 106, 43, 0.3);
-  font-family: var(--font-code);
-  font-size: 0.7rem;
-  color: var(--primary);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.hud-badge.pink {
-  background: rgba(255, 45, 122, 0.1);
-  border-color: rgba(255, 45, 122, 0.3);
-  color: var(--accent);
-}
-
-.hud-badge.green {
-  background: rgba(39, 201, 63, 0.1);
-  border-color: rgba(39, 201, 63, 0.3);
-  color: #27c93f;
-}
-
-.hud-badge::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 6px currentColor;
-  animation: secDotPulse 1.5s infinite alternate ease-in-out;
-}
-
-/* ==========================================================================
-   ANIMATED VERTICAL EDUCATION TIMELINE (SAHIL STYLE)
-   ========================================================================== */
-.timeline-container {
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-/* Vertical gradient timeline line */
-.timeline-container::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 174, 0, 0.8) 0%,
-    rgba(255, 106, 43, 0.8) 40%,
-    rgba(255, 45, 122, 0.8) 80%,
-    rgba(255, 45, 122, 0.1) 100%
-  );
-  border-radius: 2px;
-}
-
-/* Individual timeline entry */
-.timeline-entry {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-left: 2rem;
-}
-
-/* Glowing timeline node */
-.timeline-entry::before {
-  content: '';
-  position: absolute;
-  left: -1.8rem;
-  top: 8px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--bg-dark);
-  border: 2px solid var(--primary);
-  box-shadow: 0 0 12px rgba(255, 106, 43, 0.6);
-  z-index: 2;
-  transition: box-shadow 0.3s ease;
-}
-
-.timeline-entry:hover::before {
-  box-shadow: 0 0 20px rgba(255, 106, 43, 0.9), 0 0 6px rgba(255, 106, 43, 0.5) inset;
-}
-
-/* Pinging inner dot */
-.timeline-entry::after {
-  content: '';
-  position: absolute;
-  left: -1.55rem;
-  top: 13px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  animation: timelinePing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-  z-index: 3;
-}
-
-@keyframes timelinePing {
-  0% { transform: scale(1); opacity: 1; }
-  75%, 100% { transform: scale(2.5); opacity: 0; }
-}
-
-/* Active/current timeline entry gets pink node */
-.timeline-entry.active::before {
-  border-color: var(--accent);
-  box-shadow: 0 0 16px rgba(255, 45, 122, 0.7);
-}
-
-.timeline-entry.active::after {
-  background: var(--accent);
-}
-
-/* Timeline card content */
-.timeline-card {
-  background: rgba(26, 26, 34, 0.7);
-  border: 1px solid rgba(255, 106, 43, 0.2);
-  border-radius: 14px;
-  padding: 1.25rem 1.5rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-card:hover {
-  border-color: rgba(255, 106, 43, 0.45);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 106, 43, 0.08);
-}
-
-.timeline-entry.active .timeline-card {
-  border-color: rgba(255, 45, 122, 0.35);
-  background: linear-gradient(135deg, rgba(255, 45, 122, 0.05) 0%, rgba(26, 26, 34, 0.8) 100%);
-}
-
-.timeline-year {
-  font-family: var(--font-code);
-  font-size: 0.7rem;
-  color: var(--primary);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
-  opacity: 0.85;
-}
-
-.timeline-entry.active .timeline-year {
-  color: var(--accent);
-}
-
-.timeline-degree {
-  font-family: var(--font-orbitron);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.03em;
-  margin-bottom: 0.25rem;
-}
-
-.timeline-institution {
-  font-family: var(--font-chakra);
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
-}
-
-.timeline-details {
-  font-family: var(--font-code);
-  font-size: 0.76rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.timeline-detail-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.45rem;
-  margin-bottom: 0.3rem;
-}
-
-.timeline-detail-item::before {
-  content: '›';
-  color: var(--primary);
-  font-size: 0.9rem;
-  line-height: 1.4;
-  flex-shrink: 0;
-}
-
-/* ==========================================================================
-   ORBITRON HERO & NAV HEADING UPGRADE
-   ========================================================================== */
-.logo-text-brand {
-  font-family: var(--font-orbitron) !important;
-}
-
-.nav-link {
-  font-family: var(--font-rajdhani) !important;
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-}
-
-.hero-name {
-  font-family: var(--font-orbitron) !important;
-  letter-spacing: 0.04em;
-}
-
-/* Fira Code monospace for terminal, logs and code blocks */
-.terminal-body, .log-row, .console-logs-window, .hacking-header,
-.terminal-command-line, .hacking-header, .console-heading,
-.spec-label, .spec-value, .metric-label {
-  font-family: var(--font-code) !important;
-}
-
-/* Section heading gradient text fix */
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-/* Section heading gradient text fix */
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
 }

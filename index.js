@@ -1101,52 +1101,28 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const customCursor = document.getElementById('customCursor');
   if (customCursor) {
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let curX = mouseX;
-    let curY = mouseY;
-    let cursorVisible = false;
-
-    // Track raw mouse position
     document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!cursorVisible) {
-        cursorVisible = true;
-        customCursor.style.opacity = '1';
-      }
+      customCursor.style.left = `${e.clientX}px`;
+      customCursor.style.top = `${e.clientY}px`;
+      customCursor.classList.add('active');
     });
 
     document.addEventListener('mouseleave', () => {
-      cursorVisible = false;
-      customCursor.style.opacity = '0';
+      customCursor.classList.remove('active');
     });
 
-    // Smooth RAF loop
-    const animateCursor = () => {
-      // Lerp (linear interpolation) — 0.18 = smooth lag
-      curX += (mouseX - curX) * 0.18;
-      curY += (mouseY - curY) * 0.18;
-      customCursor.style.transform = `translate(${curX}px, ${curY}px)`;
-      requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
-
-    // Hover state on interactive elements
+    // Shrink/expand state on hover elements
     const updateInteractiveListeners = () => {
-      const interactives = document.querySelectorAll('a, button, input, textarea, select, .glass-card, .btn, .decrypt-btn, .nav-link, .logo, .timeline-card, .hud-badge');
+      const interactives = document.querySelectorAll('a, button, input, textarea, select, .glass-card, .btn, .decrypt-btn, .nav-link, .logo');
       interactives.forEach(el => {
-        if (!el.dataset.cursorBound) {
-          el.dataset.cursorBound = 'true';
-          el.addEventListener('mouseenter', () => customCursor.classList.add('hovering'));
-          el.addEventListener('mouseleave', () => customCursor.classList.remove('hovering'));
-        }
+        el.addEventListener('mouseenter', () => customCursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => customCursor.classList.remove('hovering'));
       });
     };
     updateInteractiveListeners();
+    // Re-check periodically for dynamically injected elements
     setInterval(updateInteractiveListeners, 2000);
   }
-
 
   /* ==========================================================================
      SCROLL PROGRESS BAR SYNC
