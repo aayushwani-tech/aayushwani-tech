@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
      TYPEWRITER ROTATOR FOR HERO SUBTITLE
      ========================================================================== */
   const typewriterText = document.getElementById('typewriterText');
-  const words = ['Learning CS Fundamentals', 'C Programming'];
+  const words = ['CS Fundamentals', 'C Programming'];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
