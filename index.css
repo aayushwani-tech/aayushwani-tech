@@ -575,9 +575,10 @@ img, svg {
   border: none;
   color: #fff;
   font-family: monospace;
-  font-size: 0.95rem;
+  font-size: 16px;
   outline: none;
 }
+
 
 .decrypt-btn {
   width: 100%;
@@ -2219,10 +2220,11 @@ img, svg {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  font-size: 0.95rem;
+  font-size: 16px;
   color: var(--text-primary);
   transition: var(--transition-normal);
 }
+
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -2644,9 +2646,10 @@ img, svg {
   border: none;
   color: #fff;
   font-family: monospace;
-  font-size: 0.95rem;
+  font-size: 16px;
   outline: none;
 }
+
 
 .decrypt-btn {
   width: 100%;
