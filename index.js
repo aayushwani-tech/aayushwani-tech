@@ -334,9 +334,17 @@ document.addEventListener('DOMContentLoaded', () => {
             hackingAccess.classList.add('fade-out');
           }
           
-          const badgeText = document.getElementById('heroBadgeText');
-          if (badgeText) {
-            badgeText.textContent = `Welcome, ${visitorName}! Available for projects & learning`;
+          const visitorNameBadge = document.getElementById('visitorNameBadge');
+          if (visitorNameBadge) {
+            visitorNameBadge.textContent = visitorName;
+          }
+          const arcVisitorName = document.getElementById('arcVisitorName');
+          if (arcVisitorName) {
+            arcVisitorName.textContent = visitorName;
+          }
+          const terminalVisitorName = document.getElementById('terminalVisitorName');
+          if (terminalVisitorName) {
+            terminalVisitorName.textContent = visitorName;
           }
           
           const heroReveals = document.querySelectorAll('.hero-section .reveal-on-scroll');
@@ -356,8 +364,17 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const savedVisitor = localStorage.getItem('aayush_portfolio_visitor');
-  if (savedVisitor && visitorInput) {
-    visitorInput.value = savedVisitor;
+  if (savedVisitor) {
+    if (visitorInput) visitorInput.value = savedVisitor;
+    
+    const visitorNameBadge = document.getElementById('visitorNameBadge');
+    if (visitorNameBadge) visitorNameBadge.textContent = savedVisitor;
+    
+    const arcVisitorName = document.getElementById('arcVisitorName');
+    if (arcVisitorName) arcVisitorName.textContent = savedVisitor;
+    
+    const terminalVisitorName = document.getElementById('terminalVisitorName');
+    if (terminalVisitorName) terminalVisitorName.textContent = savedVisitor;
   }
   
   if (decryptBtn) {
