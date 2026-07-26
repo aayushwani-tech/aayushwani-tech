@@ -3192,7 +3192,7 @@ body.preloader-active {
   box-shadow: 0 0 12px rgba(255, 174, 0, 0.3) !important;
 }
 
-#visitorKeyInput {
+#visitorKeyInput, #visitorSapInput {
   width: 100%;
   background: transparent;
   border: none;
@@ -3203,7 +3203,7 @@ body.preloader-active {
   outline: none;
 }
 
-#visitorKeyInput::placeholder {
+#visitorKeyInput::placeholder, #visitorSapInput::placeholder {
   color: rgba(255, 255, 255, 0.32) !important;
 }
 
