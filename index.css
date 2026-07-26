@@ -3,24 +3,24 @@
    ========================================================================== */
 :root {
   /* Color Palette */
-  --bg-dark: hsl(220, 20%, 4%);
-  --bg-card: rgba(20, 20, 26, 0.45);
-  --bg-card-hover: rgba(32, 32, 45, 0.6);
-  --border-color: rgba(0, 240, 255, 0.15);
-  --border-hover: rgba(230, 36, 41, 0.5);
+  --bg-dark: #070b18;
+  --bg-card: rgba(15, 23, 42, 0.45);
+  --bg-card-hover: rgba(30, 41, 59, 0.6);
+  --border-color: rgba(168, 85, 247, 0.15);
+  --border-hover: rgba(0, 229, 255, 0.5);
   
   --text-primary: hsl(0, 0%, 98%);
-  --text-muted: hsl(215, 10%, 68%);
-  --text-accent: hsl(190, 100%, 75%); /* Glowing Arc Reactor Cyan */
+  --text-muted: hsl(220, 14%, 72%);
+  --text-accent: hsl(187, 100%, 75%); /* Glowing Cyan */
   
-  --primary: hsl(358, 85%, 52%); /* Stark Crimson Red */
-  --primary-glow: rgba(230, 36, 41, 0.25);
-  --secondary: hsl(41, 95%, 52%); /* Stark Gold */
-  --accent: hsl(188, 100%, 50%); /* Arc Reactor Cyan */
+  --primary: #a855f7; /* Cyberpunk Purple */
+  --primary-glow: rgba(168, 85, 247, 0.25);
+  --secondary: #00e5ff; /* Cyberpunk Cyan */
+  --accent: #ec4899; /* Cyberpunk Pink */
   
   --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  --gradient-text: linear-gradient(135deg, #ffffff 10%, var(--text-accent) 50%, var(--secondary) 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(230, 36, 41, 0.5) 0%, rgba(0, 240, 255, 0.5) 100%);
+  --gradient-text: linear-gradient(135deg, #ffffff 10%, var(--text-accent) 50%, var(--accent) 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(168, 85, 247, 0.5) 0%, rgba(0, 229, 255, 0.5) 100%);
 
   /* Shadows & Glassmorphism */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -459,11 +459,11 @@ body.preloader-active {
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  border: 1.5px solid rgba(0, 240, 255, 0.35);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 240, 255, 0.12);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(168, 85, 247, 0.12);
   background: 
-    linear-gradient(rgba(0, 240, 255, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
-    radial-gradient(circle at center, rgba(10, 15, 26, 0.88) 0%, rgba(8, 8, 12, 0.96) 100%);
+    linear-gradient(rgba(168, 85, 247, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
+    radial-gradient(circle at center, rgba(7, 11, 24, 0.88) 0%, rgba(8, 8, 12, 0.96) 100%);
   background-size: 100% 4px, 100% 100%;
   border-radius: 0 !important;
   animation: consoleGlow 4s infinite alternate ease-in-out;
@@ -547,12 +547,12 @@ body.preloader-active {
 
 @keyframes consoleGlow {
   0% {
-    border-color: rgba(0, 240, 255, 0.35);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 240, 255, 0.12);
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(168, 85, 247, 0.12);
   }
   100% {
-    border-color: rgba(230, 36, 41, 0.6);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(230, 36, 41, 0.25);
+    border-color: rgba(0, 229, 255, 0.6);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 229, 255, 0.25);
   }
 }
 
@@ -2656,8 +2656,8 @@ body.preloader-active {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(0, 240, 255, 0.03) 40%,
-    rgba(0, 240, 255, 0.12) 90%,
+    rgba(168, 85, 247, 0.03) 40%,
+    rgba(168, 85, 247, 0.12) 90%,
     transparent 100%
   );
   animation: scanlineSweep 6s linear infinite;
@@ -2672,12 +2672,12 @@ body.preloader-active {
 
 @keyframes consoleGlow {
   0% {
-    border-color: rgba(0, 240, 255, 0.35);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 240, 255, 0.12);
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(168, 85, 247, 0.12);
   }
   100% {
-    border-color: rgba(230, 36, 41, 0.6);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(230, 36, 41, 0.25);
+    border-color: rgba(0, 229, 255, 0.6);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 229, 255, 0.25);
   }
 }
 
@@ -2716,7 +2716,7 @@ body.preloader-active {
   min-height: 380px;
   background: 
     linear-gradient(rgba(168, 85, 247, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
-    radial-gradient(circle at center, rgba(18, 11, 26, 0.8) 0%, rgba(8, 8, 12, 0.95) 100%);
+    radial-gradient(circle at center, rgba(7, 11, 24, 0.8) 0%, rgba(8, 8, 12, 0.95) 100%);
   background-size: 100% 4px, 100% 100%;
   border: 1.5px solid rgba(168, 85, 247, 0.22);
   border-radius: 16px;

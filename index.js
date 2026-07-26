@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < drops.length; i++) {
         const text = charArray[Math.floor(Math.random() * charArray.length)];
         
-        ctx.fillStyle = 'rgba(215, 240, 255, 0.98)'; // Arc Reactor cyan matrix rain
+        ctx.fillStyle = 'rgba(235, 215, 255, 0.98)'; // Cyberpunk purple matrix rain
         ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgb(0, 240, 255)';
+        ctx.shadowColor = 'rgb(168, 85, 247)';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
-        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(0, 240, 255, 0.55)' : 'rgba(30, 144, 255, 0.4)';
+        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(0, 229, 255, 0.55)' : 'rgba(236, 72, 153, 0.4)';
         ctx.shadowBlur = 2;
         ctx.fillText(text, i * fontSize, (drops[i] - 1) * fontSize);
         
@@ -112,24 +112,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = ratio * helixHeight - (helixHeight / 2);
       const angle = ratio * Math.PI * 3.5; // 1.75 full rotations
       
-      // Strand A (Crimson Red)
+      // Strand A (Purple)
       const xa = Math.cos(angle) * helixRadius;
       const za = Math.sin(angle) * helixRadius;
       points.push({
         x: xa, y: y, z: za,
         type: 'strandA',
         vx: 0, vy: 0, vz: 0,
-        color: 'rgba(230, 36, 41, 0.95)'
+        color: 'rgba(168, 85, 247, 0.95)'
       });
       
-      // Strand B (Stark Gold)
+      // Strand B (Pink)
       const xb = Math.cos(angle + Math.PI) * helixRadius;
       const zb = Math.sin(angle + Math.PI) * helixRadius;
       points.push({
         x: xb, y: y, z: zb,
         type: 'strandB',
         vx: 0, vy: 0, vz: 0,
-        color: 'rgba(243, 176, 28, 0.95)'
+        color: 'rgba(236, 72, 153, 0.95)'
       });
       
       const idxA = points.length - 2;
@@ -208,17 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const alpha = Math.max(0.06, 0.45 * (avgScale / 1.15));
         
         if (link.type === 'rung') {
-          // base rungs connect A (crimson red) and B (stark gold)
+          // base rungs connect A (purple) and B (pink)
           const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-          grad.addColorStop(0, `rgba(230, 36, 41, ${alpha * 0.55})`);
-          grad.addColorStop(1, `rgba(243, 176, 28, ${alpha * 0.55})`);
+          grad.addColorStop(0, `rgba(168, 85, 247, ${alpha * 0.55})`);
+          grad.addColorStop(1, `rgba(236, 72, 153, ${alpha * 0.55})`);
           ctx.strokeStyle = grad;
           ctx.lineWidth = 1.1;
         } else if (link.type === 'backboneA') {
-          ctx.strokeStyle = `rgba(0, 240, 255, ${alpha * 1.5})`;
+          ctx.strokeStyle = `rgba(0, 229, 255, ${alpha * 1.5})`;
           ctx.lineWidth = 1.35;
         } else {
-          ctx.strokeStyle = `rgba(0, 240, 255, ${alpha * 1.5})`;
+          ctx.strokeStyle = `rgba(0, 229, 255, ${alpha * 1.5})`;
           ctx.lineWidth = 1.35;
         }
         ctx.stroke();
