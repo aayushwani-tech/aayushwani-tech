@@ -3284,3 +3284,15 @@ body.preloader-active {
   98% { opacity: 0.3; }
   99% { opacity: 0.9; }
 }
+
+/* Hacking Access Card Shake Validation Feedback */
+.shake-animation {
+  animation: cardShake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes cardShake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
+}

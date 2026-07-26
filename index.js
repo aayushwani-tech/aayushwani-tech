@@ -254,7 +254,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let name = visitorInput ? visitorInput.value.trim() : '';
     let sapId = visitorSapInput ? visitorSapInput.value.trim() : '';
     
-    if (!name) name = 'Guest';
+    if (!name) {
+      const nameWrapper = visitorInput ? visitorInput.closest('.terminal-command-line') : null;
+      if (nameWrapper) {
+        nameWrapper.style.borderColor = '#ef4444';
+        nameWrapper.style.boxShadow = '0 0 15px rgba(239, 68, 68, 0.4)';
+        
+        const consoleCard = document.querySelector('.hacking-console-card');
+        if (consoleCard) {
+          consoleCard.classList.remove('shake-animation');
+          void consoleCard.offsetWidth; // Trigger reflow to restart animation
+          consoleCard.classList.add('shake-animation');
+        }
+        
+        setTimeout(() => {
+          nameWrapper.style.borderColor = '';
+          nameWrapper.style.boxShadow = '';
+        }, 1500);
+      }
+      if (visitorInput) visitorInput.focus();
+      return; // Stop access when name is blank
+    }
+    
     if (!sapId) sapId = 'Not Provided';
     
     visitorName = name;
