@@ -36,27 +36,31 @@
       
       <!-- 3D Holographic Orbiting Core Node -->
       <div class="holo-core-wrapper">
-        <div class="holo-core" id="holoCore">
-          <div class="holo-ring ring-1"></div>
-          <div class="holo-ring ring-2"></div>
-          <div class="holo-ring ring-3"></div>
-          <div class="holo-grid-plane"></div>
+        <canvas id="preloaderCanvas3D" class="preloader-canvas-3d"></canvas>
+        <div class="preloader-core-glow"></div>
+      </div>
+      
+      <!-- Credentials Form Column -->
+      <div class="console-form-content">
+        <h2 class="console-heading">AAYUSH WANI PORTFOLIO</h2>
+        <p class="console-subtext">Enter credentials to decode portfolio (optional):</p>
+        
+        <div class="terminal-command-line">
+          <span class="terminal-prompt">guest@wani-sec:~$ visitor_name:</span>
+          <input type="text" id="visitorKeyInput" placeholder="your name (optional)..." autocomplete="off" autofocus>
         </div>
-      </div>
-      
-      <h2 class="console-heading">AAYUSH WANI PORTFOLIO</h2>
-      <p class="console-subtext">Enter credential key to decode portfolio:</p>
-      
-      <div class="terminal-command-line">
-        <span class="terminal-prompt">guest@wani-sec:~$ ./decrypt -u</span>
-        <input type="text" id="visitorKeyInput" placeholder="your_name..." autocomplete="off" autofocus>
-      </div>
-      
-      <button id="decryptBtn" class="btn btn-primary decrypt-btn">DECRYPT ACCESS PORT</button>
-      
-      <!-- Hacking Decrypt Log Outputs -->
-      <div class="console-logs-window" id="consoleLogs">
-        <div class="log-row info">System standing by... Ready for decryption command.</div>
+        
+        <div class="terminal-command-line" style="margin-top: -0.5rem;">
+          <span class="terminal-prompt">guest@wani-sec:~$ sap_id:</span>
+          <input type="text" id="visitorSapInput" placeholder="SAP ID (optional)..." autocomplete="off">
+        </div>
+        
+        <button id="decryptBtn" class="btn btn-primary decrypt-btn">DECRYPT ACCESS PORT</button>
+        
+        <!-- Hacking Decrypt Log Outputs -->
+        <div class="console-logs-window" id="consoleLogs">
+          <div class="log-row info">System standing by... Ready for decryption command.</div>
+        </div>
       </div>
     </div>
   </div>

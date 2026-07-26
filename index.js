@@ -1,17 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   
   /* ==========================================================================
-     CYBERPUNK HACKING ACCESS INTERFACE CONTROLLER
+     CYBERPUNK HACKING ACCESS INTERFACE CONTROLLER (3D DNA HELIX THEME)
      ========================================================================== */
   const hackingAccess = document.getElementById('hackingAccess');
   const visitorInput = document.getElementById('visitorKeyInput');
+  const visitorSapInput = document.getElementById('visitorSapInput');
   const decryptBtn = document.getElementById('decryptBtn');
   const consoleLogs = document.getElementById('consoleLogs');
-  const holoCore = document.getElementById('holoCore');
   const matrixCanvas = document.getElementById('matrixCanvas');
-  
+  const canvas3D = document.getElementById('preloaderCanvas3D');
+
   let visitorName = '';
-  
+
   // 1. Matrix Code Rain Backdrop Animation
   if (matrixCanvas) {
     const ctx = matrixCanvas.getContext('2d');
@@ -30,23 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const drops = Array(Math.floor(columns)).fill(1);
     
     const drawMatrix = () => {
-      // Slow fade background trail
       ctx.fillStyle = 'rgba(6, 6, 9, 0.12)';
       ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-      
       ctx.font = `bold ${fontSize}px monospace`;
       
       for (let i = 0; i < drops.length; i++) {
         const text = charArray[Math.floor(Math.random() * charArray.length)];
         
-        // 1. Draw glowing leading character
-        ctx.fillStyle = 'rgba(255, 235, 210, 0.98)';
+        ctx.fillStyle = 'rgba(215, 240, 255, 0.98)'; // cyber blue/cyan matrix rain
         ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgb(255, 90, 0)';
+        ctx.shadowColor = 'rgb(0, 191, 255)';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
-        // 2. Draw trailing characters with fading hues
-        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(255, 90, 0, 0.55)' : 'rgba(255, 0, 102, 0.4)';
+        ctx.fillStyle = Math.random() > 0.25 ? 'rgba(0, 191, 255, 0.55)' : 'rgba(30, 144, 255, 0.4)';
         ctx.shadowBlur = 2;
         ctx.fillText(text, i * fontSize, (drops[i] - 1) * fontSize);
         
@@ -55,12 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         drops[i]++;
       }
-      
-      // Reset shadows for next frame operations
       ctx.shadowBlur = 0;
     };
 
-    
     const matrixInterval = setInterval(drawMatrix, 35);
     
     if (hackingAccess) {
@@ -72,18 +66,201 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 2. Run Decryption Logging Sequence
-  const runDecryptionSequence = (name) => {
-    visitorName = name.trim();
-    if (!visitorName) visitorName = 'Guest';
+  // 2. 3D Holographic DNA Helix Preloader
+  let autoRotateSpeed = 0.015;
+  let isExploding = false;
+  const points = [];
+  const links = [];
+
+  if (canvas3D) {
+    document.body.classList.add('preloader-active');
+    const ctx = canvas3D.getContext('2d');
+    let rect = canvas3D.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas3D.width = (rect.width || 140) * dpr;
+    canvas3D.height = (rect.height || 140) * dpr;
+    ctx.scale(dpr, dpr);
     
+    let cssCw = rect.width || 140;
+    let cssCh = rect.height || 140;
+    
+    window.addEventListener('resize', () => {
+      rect = canvas3D.getBoundingClientRect();
+      const rDpr = window.devicePixelRatio || 1;
+      canvas3D.width = (rect.width || 140) * rDpr;
+      canvas3D.height = (rect.height || 140) * rDpr;
+      const rCtx = canvas3D.getContext('2d');
+      rCtx.scale(rDpr, rDpr);
+      cssCw = rect.width || 140;
+      cssCh = rect.height || 140;
+    });
+
+    let angleX = -0.15;
+    let angleY = 0.3;
+    let isDragging = false;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    let autoRotate = true;
+
+    // Generate 3D DNA Helix strands
+    const numPoints = 26; // number of rungs along the helix
+    const helixHeight = 110;
+    const helixRadius = 24;
+    
+    for (let i = 0; i < numPoints; i++) {
+      const ratio = i / (numPoints - 1);
+      const y = ratio * helixHeight - (helixHeight / 2);
+      const angle = ratio * Math.PI * 3.5; // 1.75 full rotations
+      
+      // Strand A (Cyan)
+      const xa = Math.cos(angle) * helixRadius;
+      const za = Math.sin(angle) * helixRadius;
+      points.push({
+        x: xa, y: y, z: za,
+        type: 'strandA',
+        vx: 0, vy: 0, vz: 0,
+        color: 'rgba(0, 240, 255, 0.95)'
+      });
+      
+      // Strand B (Pink/Red)
+      const xb = Math.cos(angle + Math.PI) * helixRadius;
+      const zb = Math.sin(angle + Math.PI) * helixRadius;
+      points.push({
+        x: xb, y: y, z: zb,
+        type: 'strandB',
+        vx: 0, vy: 0, vz: 0,
+        color: 'rgba(255, 0, 102, 0.95)'
+      });
+      
+      const idxA = points.length - 2;
+      const idxB = points.length - 1;
+      
+      // Connect base rungs (horizontal ladders)
+      links.push({ p1: idxA, p2: idxB, type: 'rung' });
+      
+      // Connect vertical backbone strands
+      if (i > 0) {
+        const prevIdxA = idxA - 2;
+        const prevIdxB = idxB - 2;
+        links.push({ p1: prevIdxA, p2: idxA, type: 'backboneA' });
+        links.push({ p1: prevIdxB, p2: idxB, type: 'backboneB' });
+      }
+    }
+
+    // Projection calculation
+    const project = (x, y, z) => {
+      const x1 = x * Math.cos(angleY) - z * Math.sin(angleY);
+      const z1 = x * Math.sin(angleY) + z * Math.cos(angleY);
+      const y2 = y * Math.cos(angleX) - z1 * Math.sin(angleX);
+      const z2 = y * Math.sin(angleX) + z1 * Math.cos(angleX);
+      
+      const fov = 180;
+      const cameraDist = 200;
+      const scale = fov / (cameraDist + z2);
+      
+      return {
+        x: cssCw / 2 + x1 * scale,
+        y: cssCh / 2 + y2 * scale,
+        scale: scale,
+        z: z2
+      };
+    };
+
+    const render = () => {
+      ctx.clearRect(0, 0, cssCw, cssCh);
+      
+      if (autoRotate && !isDragging && !isExploding) {
+        angleY += autoRotateSpeed;
+        angleX = Math.sin(angleY * 0.3) * 0.1 - 0.05;
+      }
+
+      if (isExploding) {
+        points.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.z += p.vz;
+          p.vx *= 1.02;
+          p.vy *= 1.02;
+          p.vz *= 1.02;
+        });
+      }
+
+      const projected = points.map(p => ({
+        proj: project(p.x, p.y, p.z),
+        orig: p
+      }));
+
+      // Sort nodes back-to-front
+      projected.sort((a, b) => b.proj.z - a.proj.z);
+
+      // Render wireframe links
+      links.forEach(link => {
+        const pt1 = points[link.p1];
+        const pt2 = points[link.p2];
+        const p1 = project(pt1.x, pt1.y, pt1.z);
+        const p2 = project(pt2.x, pt2.y, pt2.z);
+        
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        
+        const avgScale = (p1.scale + p2.scale) / 2;
+        const alpha = Math.max(0.06, 0.45 * (avgScale / 1.15));
+        
+        if (link.type === 'rung') {
+          // base rungs connect A (cyan) and B (pink)
+          const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+          grad.addColorStop(0, `rgba(0, 240, 255, ${alpha * 0.55})`);
+          grad.addColorStop(1, `rgba(255, 0, 102, ${alpha * 0.55})`);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.1;
+        } else if (link.type === 'backboneA') {
+          ctx.strokeStyle = `rgba(0, 240, 255, ${alpha * 1.5})`;
+          ctx.lineWidth = 1.35;
+        } else {
+          ctx.strokeStyle = `rgba(255, 0, 102, ${alpha * 1.5})`;
+          ctx.lineWidth = 1.35;
+        }
+        ctx.stroke();
+      });
+
+      // Render nodes
+      projected.forEach(item => {
+        const { x, y, scale } = item.proj;
+        const p = item.orig;
+        
+        ctx.beginPath();
+        const size = Math.max(0.8, 2.5 * scale);
+        ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        
+        if (scale > 1.1) {
+          ctx.beginPath();
+          ctx.arc(x, y, size * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = p.color.replace('0.95', '0.15');
+          ctx.fill();
+        }
+      });
+
+      requestAnimationFrame(render);
+    };
+
+    render();
+  }
+
+  // 3. Run Decryption Logging Sequence
+  const runDecryptionSequence = () => {
+    let name = visitorInput ? visitorInput.value.trim() : '';
+    let sapId = visitorSapInput ? visitorSapInput.value.trim() : '';
+    
+    if (!name) name = 'Guest';
+    if (!sapId) sapId = 'Not Provided';
+    
+    visitorName = name;
     localStorage.setItem('aayush_portfolio_visitor', visitorName);
     
-
-
-
-    // 2. Send instant notification to your Discord Server (Optional)
-    // Create a Webhook on your Discord server, and paste the URL below:
+    // Trigger Discord Webhook Notification with both fields (Optional)
     const discordWebhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
     if (discordWebhookUrl && discordWebhookUrl !== 'YOUR_DISCORD_WEBHOOK_URL') {
       fetch(discordWebhookUrl, {
@@ -92,9 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({
           embeds: [{
             title: "🎯 New Portfolio Visitor",
-            color: 16738304, // Warm sunset orange color hex (decimal: 16738304)
+            color: 16738304,
             fields: [
               { name: "Name", value: visitorName, inline: true },
+              { name: "SAP ID", value: sapId, inline: true },
               { name: "Time", value: new Date().toLocaleString(), inline: true }
             ],
             footer: { text: "Wani-Sec Authentication System" }
@@ -103,24 +281,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }).catch(err => console.error('Webhook notification failed:', err));
     }
 
-    
     if (visitorInput) visitorInput.disabled = true;
+    if (visitorSapInput) visitorSapInput.disabled = true;
     if (decryptBtn) decryptBtn.disabled = true;
     
-    // Speed up the 3D hologram spin rotation
-    if (holoCore) {
-      holoCore.style.animation = 'spinHoloCore 1.5s infinite cubic-bezier(0.55, 0.085, 0.68, 0.53)';
-    }
-    
-    
-    
+    // Speed up the 3D core spin speed dynamically!
+    autoRotateSpeed = 0.08;
+
     const logRows = [
-      { text: `guest@wani-sec:~$ ./decrypt --auth --user="${visitorName}"`, type: 'cmd' },
-      { text: `[FIREWALL] Requesting node override clearance...`, type: 'info' },
-      { text: `[SECURITY] Decrypting database hashes: NMIMS_SHIRPUR... [SUCCESS]`, type: 'alert' },
-      { text: `[INFO] Parsing CS fundamentals, pointer arrays & logic units...`, type: 'info' },
-      { text: `[BYPASS] Disabling secondary stack filtration filters...`, type: 'alert' },
-      { text: `[SUCCESS] Decrypted core portfolio. Connection secure.`, type: 'success' }
+      { text: `guest@wani-sec:~$ ./decrypt --user="${name}" --sap="${sapId}"`, type: 'cmd' },
+      { text: `[GENETICS] Initiating biometric DNA sequence check...`, type: 'info' },
+      { text: `[BIOMETRIC] Verifying sequence matching for user: ${name}...`, type: 'alert' },
+      { text: `[DATABASE] Reading credential metadata keys... [SUCCESS]`, type: 'info' },
+      { text: `[SUCCESS] Decrypted core portfolio. Biometrics verified.`, type: 'success' }
     ];
     
     let currentLogIndex = 0;
@@ -140,8 +313,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         currentLogIndex++;
         
-        setTimeout(printNextLogRow, 300 + Math.random() * 200);
+        setTimeout(printNextLogRow, 220 + Math.random() * 120);
       } else {
+        // Trigger preloader particle explosion (split DNA strands!)
+        isExploding = true;
+        points.forEach(p => {
+          if (p.type === 'strandA') {
+            p.vx = 6.8;
+            p.vy = (Math.random() - 0.5) * 4;
+            p.vz = (Math.random() - 0.5) * 4;
+          } else {
+            p.vx = -6.8;
+            p.vy = (Math.random() - 0.5) * 4;
+            p.vz = (Math.random() - 0.5) * 4;
+          }
+        });
+
         setTimeout(() => {
           if (hackingAccess) {
             hackingAccess.classList.add('fade-out');
@@ -158,34 +345,41 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
             if (hackingAccess) {
               hackingAccess.remove();
+              document.body.classList.remove('preloader-active');
             }
           }, 1200);
-        }, 500);
+        }, 550);
       }
     };
     
     printNextLogRow();
   };
-  
+
   const savedVisitor = localStorage.getItem('aayush_portfolio_visitor');
   if (savedVisitor && visitorInput) {
     visitorInput.value = savedVisitor;
   }
   
   if (decryptBtn) {
-    decryptBtn.addEventListener('click', () => {
-      const val = visitorInput ? visitorInput.value : '';
-      runDecryptionSequence(val);
-    });
+    decryptBtn.addEventListener('click', runDecryptionSequence);
   }
   
   if (visitorInput) {
     visitorInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        runDecryptionSequence(visitorInput.value);
+        runDecryptionSequence();
       }
     });
   }
+
+  if (visitorSapInput) {
+    visitorSapInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        runDecryptionSequence();
+      }
+    });
+  }
+
 
 
   
@@ -741,6 +935,31 @@ document.addEventListener('DOMContentLoaded', () => {
       fx.setText(originalText).then(() => {
         isScrambling = false;
       });
+    });
+  });
+
+  /* ==========================================================================
+     3D INTERACTIVE TILT FOR SKILL CARDS
+     ========================================================================== */
+  const skillCards = document.querySelectorAll('.skill-card');
+  
+  skillCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((y - centerY) / centerY) * -12;
+      const rotateY = ((x - centerX) / centerX) * 12;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     });
   });
 
