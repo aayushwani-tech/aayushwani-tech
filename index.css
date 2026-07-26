@@ -6,21 +6,21 @@
   --bg-dark: #070b18;
   --bg-card: rgba(15, 23, 42, 0.45);
   --bg-card-hover: rgba(30, 41, 59, 0.6);
-  --border-color: rgba(168, 85, 247, 0.15);
+  --border-color: rgba(255, 90, 0, 0.15);
   --border-hover: rgba(0, 229, 255, 0.5);
   
   --text-primary: hsl(0, 0%, 98%);
   --text-muted: hsl(220, 14%, 72%);
   --text-accent: hsl(187, 100%, 75%); /* Glowing Cyan */
   
-  --primary: #a855f7; /* Cyberpunk Purple */
-  --primary-glow: rgba(168, 85, 247, 0.25);
+  --primary: #ff5a00; /* Cyberpunk Purple */
+  --primary-glow: rgba(255, 90, 0, 0.25);
   --secondary: #00e5ff; /* Cyberpunk Cyan */
   --accent: #ec4899; /* Cyberpunk Pink */
   
   --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   --gradient-text: linear-gradient(135deg, #ffffff 10%, var(--text-accent) 50%, var(--accent) 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(168, 85, 247, 0.5) 0%, rgba(0, 229, 255, 0.5) 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(255, 90, 0, 0.5) 0%, rgba(0, 229, 255, 0.5) 100%);
 
   /* Shadows & Glassmorphism */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -469,20 +469,20 @@ body.preloader-active {
 .lock-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1.5px dashed rgba(168, 85, 247, 0.45);
+  border: 1.5px dashed rgba(255, 90, 0, 0.45);
 }
 
 .ring-outer {
   width: 86px;
   height: 86px;
-  border-color: rgba(168, 85, 247, 0.4);
+  border-color: rgba(255, 90, 0, 0.4);
   animation: spinClockwise 15s linear infinite;
 }
 
 .ring-inner {
   width: 72px;
   height: 72px;
-  border-color: rgba(168, 85, 247, 0.75);
+  border-color: rgba(255, 90, 0, 0.75);
   border-style: dotted;
   animation: spinCounterClockwise 10s linear infinite;
 }
@@ -491,13 +491,13 @@ body.preloader-active {
   width: 58px;
   height: 58px;
   background: rgba(10, 8, 24, 0.65);
-  border: 1.5px solid rgba(168, 85, 247, 0.6);
+  border: 1.5px solid rgba(255, 90, 0, 0.6);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 20px rgba(255, 90, 0, 0.35);
   z-index: 2;
 }
 
@@ -505,7 +505,7 @@ body.preloader-active {
   width: 20px;
   height: 20px;
   color: #fff;
-  filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.6));
+  filter: drop-shadow(0 0 5px rgba(255, 90, 0, 0.6));
 }
 
 .hacking-console-card {
@@ -513,8 +513,8 @@ body.preloader-active {
   z-index: 2;
   width: 100%;
   padding: 2.2rem 2rem;
-  border: 1.2px solid rgba(168, 85, 247, 0.28) !important;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.12) !important;
+  border: 1.2px solid rgba(255, 90, 0, 0.28) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 90, 0, 0.12) !important;
   background: rgba(8, 7, 16, 0.88) !important;
   backdrop-filter: blur(20px);
   border-radius: 12px !important;
@@ -1289,8 +1289,8 @@ body.preloader-active {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(168, 85, 247, 0.1);
-  border: 1px solid rgba(168, 85, 247, 0.22);
+  background: rgba(255, 90, 0, 0.1);
+  border: 1px solid rgba(255, 90, 0, 0.22);
   color: var(--text-accent);
   padding: 0.45rem 0.9rem;
   border-radius: 50px;
@@ -1298,7 +1298,7 @@ body.preloader-active {
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.05);
+  box-shadow: 0 0 15px rgba(255, 90, 0, 0.05);
 }
 
 .badge-dot {
@@ -1314,15 +1314,15 @@ body.preloader-active {
 @keyframes pulseDot {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 90, 0, 0.7);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(168, 85, 247, 0);
+    box-shadow: 0 0 0 6px rgba(255, 90, 0, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+    box-shadow: 0 0 0 0 rgba(255, 90, 0, 0);
   }
 }
 
@@ -1380,11 +1380,11 @@ body.preloader-active {
   width: 100%;
   max-width: 520px;
   background: rgba(10, 8, 24, 0.55) !important;
-  border: 1px solid rgba(168, 85, 247, 0.25) !important;
+  border: 1px solid rgba(255, 90, 0, 0.25) !important;
   border-radius: 8px !important;
   margin: 1.2rem 0;
   overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 15px rgba(168, 85, 247, 0.06);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 90, 0, 0.06);
   backdrop-filter: blur(15px);
   transform: rotateY(-5deg) rotateX(5deg);
   transition: transform var(--transition-normal), border-color var(--transition-normal);
@@ -1402,7 +1402,7 @@ body.preloader-active {
   justify-content: space-between;
   background: rgba(0, 0, 0, 0.35);
   padding: 0.6rem 1rem;
-  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+  border-bottom: 1px solid rgba(255, 90, 0, 0.15);
 }
 
 .terminal-left {
@@ -1443,7 +1443,7 @@ body.preloader-active {
   padding: 1rem;
   font-family: monospace;
   font-size: 0.82rem;
-  color: #c084fc;
+  color: #fdba74;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -1496,14 +1496,14 @@ body.preloader-active {
   width: 100%;
   max-width: 440px;
   background: rgba(10, 8, 24, 0.55) !important;
-  border: 1px solid rgba(168, 85, 247, 0.25) !important;
+  border: 1px solid rgba(255, 90, 0, 0.25) !important;
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   position: relative;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 90, 0, 0.08);
   backdrop-filter: blur(15px);
 }
 
@@ -1514,7 +1514,7 @@ body.preloader-active {
   font-family: monospace;
   font-size: 0.7rem;
   color: var(--text-muted);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+  border-bottom: 1px solid rgba(255, 90, 0, 0.15);
   padding-bottom: 0.6rem;
 }
 
@@ -1548,10 +1548,10 @@ body.preloader-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(0, 0, 0, 0.65) 75%);
+  background: radial-gradient(circle, rgba(255, 90, 0, 0.08) 0%, rgba(0, 0, 0, 0.65) 75%);
   box-shadow: 
-    inset 0 0 30px rgba(168, 85, 247, 0.2),
-    0 0 25px rgba(168, 85, 247, 0.15);
+    inset 0 0 30px rgba(255, 90, 0, 0.2),
+    0 0 25px rgba(255, 90, 0, 0.15);
 }
 
 .arc-reactor::before {
@@ -1559,7 +1559,7 @@ body.preloader-active {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   border-radius: 50%;
-  border: 2px dashed rgba(168, 85, 247, 0.35);
+  border: 2px dashed rgba(255, 90, 0, 0.35);
   animation: spinClockwise 25s linear infinite;
 }
 
@@ -1598,7 +1598,7 @@ body.preloader-active {
 .inner-ring {
   width: 96px;
   height: 96px;
-  border: 3px double rgba(168, 85, 247, 0.6);
+  border: 3px double rgba(255, 90, 0, 0.6);
   border-left-color: transparent;
   animation: spinCounterClockwise 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -1607,13 +1607,13 @@ body.preloader-active {
   width: 66px;
   height: 66px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 30%, rgba(168, 85, 247, 0.85) 70%);
+  background: radial-gradient(circle, #ffffff 30%, rgba(255, 90, 0, 0.85) 70%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: 
-    0 0 25px 5px rgba(168, 85, 247, 0.7),
+    0 0 25px 5px rgba(255, 90, 0, 0.7),
     inset 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 5;
 }
@@ -1652,7 +1652,7 @@ body.preloader-active {
   gap: 0.45rem;
   font-family: monospace;
   font-size: 0.8rem;
-  border-top: 1px solid rgba(168, 85, 247, 0.15);
+  border-top: 1px solid rgba(255, 90, 0, 0.15);
   padding-top: 0.8rem;
 }
 
@@ -1675,10 +1675,10 @@ body.preloader-active {
   font-size: 0.68rem;
   color: var(--primary);
   text-align: center;
-  border-top: 1px solid rgba(168, 85, 247, 0.15);
+  border-top: 1px solid rgba(255, 90, 0, 0.15);
   padding-top: 0.6rem;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 5px rgba(168, 85, 247, 0.35);
+  text-shadow: 0 0 5px rgba(255, 90, 0, 0.35);
 }
 
 .hero-scroll {
@@ -2788,8 +2788,8 @@ body.preloader-active {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(168, 85, 247, 0.03) 40%,
-    rgba(168, 85, 247, 0.12) 90%,
+    rgba(255, 90, 0, 0.03) 40%,
+    rgba(255, 90, 0, 0.12) 90%,
     transparent 100%
   );
   animation: scanlineSweep 6s linear infinite;
@@ -2804,8 +2804,8 @@ body.preloader-active {
 
 @keyframes consoleGlow {
   0% {
-    border-color: rgba(168, 85, 247, 0.35);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(168, 85, 247, 0.12);
+    border-color: rgba(255, 90, 0, 0.35);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(255, 90, 0, 0.12);
   }
   100% {
     border-color: rgba(0, 229, 255, 0.6);
@@ -2847,16 +2847,16 @@ body.preloader-active {
   width: 100%;
   min-height: 380px;
   background: 
-    linear-gradient(rgba(168, 85, 247, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(rgba(255, 90, 0, 0.02) 50%, rgba(0, 0, 0, 0.25) 50%),
     radial-gradient(circle at center, rgba(7, 11, 24, 0.8) 0%, rgba(8, 8, 12, 0.95) 100%);
   background-size: 100% 4px, 100% 100%;
-  border: 1.5px solid rgba(168, 85, 247, 0.22);
+  border: 1.5px solid rgba(255, 90, 0, 0.22);
   border-radius: 16px;
   padding: 2.2rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(168, 85, 247, 0.1);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 90, 0, 0.1);
   overflow: hidden;
   position: relative;
 }
@@ -3090,14 +3090,14 @@ body.preloader-active {
   position: relative;
   width: 32px;
   height: 32px;
-  background: rgba(168, 85, 247, 0.08);
-  border: 1.2px solid rgba(168, 85, 247, 0.25);
+  background: rgba(255, 90, 0, 0.08);
+  border: 1.2px solid rgba(255, 90, 0, 0.25);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
+  box-shadow: 0 0 10px rgba(255, 90, 0, 0.1);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -3179,7 +3179,7 @@ body.preloader-active {
 
 .terminal-command-line {
   width: 100%;
-  border: 1.5px solid rgba(168, 85, 247, 0.32);
+  border: 1.5px solid rgba(255, 90, 0, 0.32);
   border-radius: 8px !important;
   background: rgba(0, 0, 0, 0.45);
   padding: 0.65rem 1rem;
@@ -3231,13 +3231,13 @@ body.preloader-active {
   background: #e2d8ff !important;
   color: #0c0b18 !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 90, 0, 0.3);
 }
 
 .console-logs-window {
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(255, 90, 0, 0.2);
   border-radius: 6px;
   padding: 0.6rem 0.8rem;
   font-family: monospace;

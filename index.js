@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < drops.length; i++) {
         const text = charArray[Math.floor(Math.random() * charArray.length)];
         
-        ctx.fillStyle = 'rgba(235, 215, 255, 0.98)'; // Cyberpunk purple matrix rain
+        ctx.fillStyle = 'rgba(255, 220, 180, 0.98)'; // Cyberpunk orange matrix rain
         ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgb(168, 85, 247)';
+        ctx.shadowColor = 'rgb(255, 90, 0)';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
         ctx.fillStyle = Math.random() > 0.25 ? 'rgba(0, 229, 255, 0.55)' : 'rgba(236, 72, 153, 0.4)';
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         x: xa, y: y, z: za,
         type: 'strandA',
         vx: 0, vy: 0, vz: 0,
-        color: 'rgba(168, 85, 247, 0.95)'
+        color: 'rgba(255, 90, 0, 0.95)'
       });
       
       // Strand B (Pink)
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link.type === 'rung') {
           // base rungs connect A (purple) and B (pink)
           const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-          grad.addColorStop(0, `rgba(168, 85, 247, ${alpha * 0.55})`);
+          grad.addColorStop(0, `rgba(255, 90, 0, ${alpha * 0.55})`);
           grad.addColorStop(1, `rgba(236, 72, 153, ${alpha * 0.55})`);
           ctx.strokeStyle = grad;
           ctx.lineWidth = 1.1;
